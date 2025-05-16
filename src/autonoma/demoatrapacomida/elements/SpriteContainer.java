@@ -3,17 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package autonoma.demoatrapacomida.elements;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Rectangle;
+import java.util.ArrayList;
 
 /**
  * @author Maria Paz Puerta Acevedo <mariap.puertaa@autonoma.edu.co>
  * @since 20250516
  * @version 1.0.0
  */
-
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Rectangle;
-import java.util.ArrayList;
 
 public abstract class SpriteContainer implements GraphicContainer {
     /**
