@@ -28,7 +28,6 @@ public class VentanaPrincipal extends javax.swing.JFrame implements GraphicConta
         initComponents();
         
         this.juego = juego;
-        pedirNombreJugador();
         this.setSize(800,800);
          setResizable(false);
         this.setLocationRelativeTo(null);
@@ -85,25 +84,7 @@ public class VentanaPrincipal extends javax.swing.JFrame implements GraphicConta
     }
     
 
-    @Override
-    public void paint(Graphics g) {
-        super.paint(g); // Llama al método de la clase padre para asegurar que se dibuje el fondo
-        dibujar(g); // Llama a tu método dibujar
-        
-        
-        g.setColor(Color.BLACK);
-        g.setFont(new Font("Arial", Font.BOLD, 24));
-        g.drawString(juego.getCampo().getJugador().getNombre(), 25, 80);
-        g.drawString("PUNTAJE", 25, 100);
-        g.drawString(String.valueOf(juego.getCampo().getJugador().getPuntaje().getPuntajeActual()), 150, 100);
-    }
 
-    public void dibujar(Graphics g) {
-        
-        
-        g.setColor(new Color(34, 139, 34));
-        g.fillRect(0, 0, 800, 800);
-    }
     
     @Override
     public void refresh(Graphics g) {

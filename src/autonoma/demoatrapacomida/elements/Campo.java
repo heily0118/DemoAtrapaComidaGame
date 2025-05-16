@@ -26,7 +26,7 @@ public class Campo extends SpriteContainer{
     
     /////////////////////////////////
     /// Constructor
-    ////
+
     public Campo(Jugador jugador) {
         this.jugador = jugador;
         this. comidas  = new ArrayList<>();
