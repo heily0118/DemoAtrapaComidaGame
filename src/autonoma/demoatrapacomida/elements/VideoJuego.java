@@ -5,8 +5,10 @@
 package autonoma.demoatrapacomida.elements;
 
 /**
- *
- * @author USUARIO
+ * 
+ * @author Heily Yohana Rios Ayala <heilyy.riosa@gmail.com>
+ * @since 20250516
+ * @version 1.0.0
  */
 public class VideoJuego {
     
