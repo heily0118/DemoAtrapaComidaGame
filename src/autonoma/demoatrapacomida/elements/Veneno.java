@@ -101,4 +101,8 @@ class Veneno extends SpriteMobile {
     public void setVenenoImagen(Image venenoImagen) {
         this.venenoImagen = venenoImagen;
     }    
+
+    int getValor() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

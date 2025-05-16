@@ -5,6 +5,7 @@
 package autonoma.demoatrapacomida.elements;
 
 import java.awt.Graphics;
+import java.awt.Image;
 
 /**
  * 
@@ -15,9 +16,11 @@ import java.awt.Graphics;
 
 public class HotDog extends Comida {
 
-    public HotDog(int x, int y, int height, int width, String nombre) {
-        super(x, y, height, width, nombre);
+    public HotDog(int x, int y, int height, int width, String nombre, Image comidaImage) {
+        super(x, y, height, width, nombre, comidaImage);
     }
+
+   
 
     @Override
     public void paint(Graphics g) {

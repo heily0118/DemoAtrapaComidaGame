@@ -21,9 +21,11 @@ import javax.swing.JOptionPane;
  */
 
 public class VentanaPrincipal extends javax.swing.JFrame implements GraphicContainer  {
-
+    
+    private ImageIcon fondo;
     
     private VideoJuego juego;
+    
     public VentanaPrincipal(VideoJuego juego) {
         initComponents();
         
@@ -31,16 +33,24 @@ public class VentanaPrincipal extends javax.swing.JFrame implements GraphicConta
         this.setSize(800,800);
          setResizable(false);
         this.setLocationRelativeTo(null);
+ 
         
-        
-        try{ 
-        this.setIconImage(new ImageIcon(getClass().getResource("/autonoma/DemoAtrapaComida/images/Logo.jpeg")).getImage());
-        
-        }catch(NullPointerException e){
-            System.out.println("Imagen no encontrada");
-            
-        }
+        try {
+         this.setIconImage(new ImageIcon(getClass().getResource("/autonoma/demoatrapacomida/images/Logo.jpeg")).getImage());
+         this.fondo = new ImageIcon(getClass().getResource("/autonoma/demoatrapacomida/images/Portada.jpeg"));
 
+         javax.swing.JPanel panelFondo = new javax.swing.JPanel() {
+             @Override
+             protected void paintComponent(Graphics g) {
+                 super.paintComponent(g);
+                 g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
+             }
+         };
+         panelFondo.setLayout(null);
+         this.setContentPane(panelFondo);
+     } catch (NullPointerException e) {
+         System.out.println("Imagen no encontrada");
+     }
 
         
     }
@@ -96,4 +106,7 @@ public class VentanaPrincipal extends javax.swing.JFrame implements GraphicConta
     public Rectangle getBoundaries() {
        return this.getBounds();
     }
+    
+  
+
 }
