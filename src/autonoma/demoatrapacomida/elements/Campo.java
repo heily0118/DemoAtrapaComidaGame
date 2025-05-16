@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * @since 20250501
  * @see autonoma.emoatrapacomida..elements
  */
-public class Campo {
+public class Campo extends SpriteContainer{
 
     ////////////////////////////////
     /// Atributos
