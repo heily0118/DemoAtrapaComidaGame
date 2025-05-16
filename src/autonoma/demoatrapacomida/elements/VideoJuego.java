@@ -11,7 +11,23 @@ package autonoma.demoatrapacomida.elements;
  * @version 1.0.0
  */
 public class VideoJuego {
+    
     private Campo campo;
+
+    public VideoJuego() {
+        this.campo = campo;
+    }
+
+    public Campo getCampo() {
+        return campo;
+    }
+
+    public void setCampo(Campo campo) {
+        this.campo = campo;
+    }
+    
+    
+    
     
     
 }
