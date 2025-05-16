@@ -6,6 +6,7 @@ package autonoma.demoatrapacomida.elements;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 
 /**
@@ -24,6 +25,7 @@ public class Jugador extends SpriteMobile{
     private  Puntaje puntaje;
     private String nombre;
     private Image jugadorImage;
+    private int pasos = 20;
 
     
     /////////////////////////////////
@@ -69,8 +71,34 @@ public class Jugador extends SpriteMobile{
     public void atraparComida(){
     
     }
-    public void mover(){
-    
+    public void move(int direction)
+    {
+        int nx = x;
+        int ny = y;
+        
+        switch(direction)
+        {
+            case KeyEvent.VK_UP:
+                ny -= pasos;
+            break;
+
+            case KeyEvent.VK_DOWN:
+                ny += pasos;
+            break;
+
+            case KeyEvent.VK_LEFT:
+                nx -= pasos;
+            break;
+
+            case KeyEvent.VK_RIGHT:
+                nx += pasos;
+            break;
+        }
+        
+        
+
+        
+      
     }
 
     @Override
