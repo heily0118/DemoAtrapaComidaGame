@@ -4,18 +4,49 @@
  */
 package autonoma.demoatrapacomida.gui;
 
+import autonoma.demoatrapacomida.elements.GraphicContainer;
+import autonoma.demoatrapacomida.elements.VideoJuego;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Rectangle;
+import javax.swing.ImageIcon;
+
 /**
  *
- * @author USUARIO
+ * @author Mateo Quintero <mateo.quinterom@autonoma.edu.co>
+ * @version 1.0.0
+ * @since 20250501
+ * @see autonoma.emoatrapacomida..elements
  */
-public class VentanaJuego extends javax.swing.JDialog {
+public class VentanaJuego extends javax.swing.JDialog implements GraphicContainer {
 
     /**
      * Creates new form VentanaJuego
      */
-    public VentanaJuego(java.awt.Frame parent, boolean modal) {
+    
+    private VideoJuego juego;
+    
+    public VentanaJuego(java.awt.Frame parent, boolean modal,VideoJuego juego) {
         super(parent, modal);
+        
         initComponents();
+        this.juego = juego;
+        
+
+        this.setSize(800,800);
+         setResizable(false);
+        this.setLocationRelativeTo(null);
+        
+        
+        try{ 
+        this.setIconImage(new ImageIcon(getClass().getResource("/autonoma/DemoAtrapaComida/images/Logo.jpeg")).getImage());
+        
+        }catch(NullPointerException e){
+            System.out.println("Imagen no encontrada");
+            
+        }
+
     }
 
     /**
@@ -43,7 +74,34 @@ public class VentanaJuego extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+        @Override
+    public void paint(Graphics g) {
+        super.paint(g); // Llama al método de la clase padre para asegurar que se dibuje el fondo
+        dibujar(g); // Llama a tu método dibujar
+        
+        
+        g.setColor(Color.BLACK);
+        g.setFont(new Font("Arial", Font.BOLD, 24));
+        g.drawString("PUNTAJE", 25, 80);
+        g.drawString(String.valueOf(juego.getCampo().getJugador().getPuntaje().getPuntajeActual()), 150, 0);
+    }
 
+    public void dibujar(Graphics g) {
+        
+        
+        g.setColor(new Color(34, 139, 34));
+        g.fillRect(0, 0, 800, 800);
+    }
+
+    @Override
+    public void refresh(Graphics g) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Rectangle getBoundaries() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * @since 20250501
  * @see autonoma.emoatrapacomida.elements
  */
-public class Campo {
+public class Campo extends SpriteContainer{
 
     ////////////////////////////////
     /// Atributos
@@ -25,9 +25,10 @@ public class Campo {
     
     
     /////////////////////////////////
-    /// Constructor
-    ////
+    /// Constructo
     public Campo(Jugador jugador) {
+        
+        super(0,0,0,0);
         this.jugador = jugador;
         this. comidas  = new ArrayList<>();
         this.venenos = new ArrayList<>();
@@ -41,5 +42,16 @@ public class Campo {
     //////////////////////////////////
     /// Metodos
     ///
+    
+    public void moverIzquierda(){
+        
+    }
+      public void moverDerecha(){
+        
+    }
+      
+      public void  atraparComida(){
+          
+      }
     
 }
