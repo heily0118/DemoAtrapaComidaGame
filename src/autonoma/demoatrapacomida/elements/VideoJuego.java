@@ -4,6 +4,9 @@
  */
 package autonoma.demoatrapacomida.elements;
 
+import java.awt.event.KeyEvent;
+import java.io.IOException;
+
 /**
  * 
  * @author Heily Yohana Rios Ayala <heilyy.riosa@gmail.com>
@@ -15,10 +18,11 @@ public class VideoJuego {
     private Campo campo;
 
     public VideoJuego() {
-        
-        Jugador j = new Jugador("");
-        Campo c = new Campo(j);
-        this.campo = c;
+        this.campo = new Campo(); 
+    }
+
+    public VideoJuego(Campo campo) {
+        this.campo = campo;
     }
 
     public Campo getCampo() {
@@ -28,9 +32,22 @@ public class VideoJuego {
     public void setCampo(Campo campo) {
         this.campo = campo;
     }
-    
-    
-    
-    
-    
+
+    public void iniciarJuego() {
+       
+    }
+
+    public void manejarEventoTeclado(KeyEvent e) throws IOException {
+        switch (e.getKeyCode()) {
+            case KeyEvent.VK_P:
+                campo.atraparComida();
+                break;
+            case KeyEvent.VK_M:
+                campo.moverIzquierda();
+                break;
+            case KeyEvent.VK_S:
+                campo.moverDerecha(); 
+                break;
+        }
+    }
 }

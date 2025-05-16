@@ -26,8 +26,13 @@ public class Campo extends SpriteContainer{
     
     /////////////////////////////////
     /// Constructor
+<<<<<<< HEAD
 
     public Campo(Jugador jugador) {
+=======
+    ////
+    public Campo() {
+>>>>>>> 52037d87bc7ce949d48a69c6c8a926f9d796b20d
         this.jugador = jugador;
         this. comidas  = new ArrayList<>();
         this.venenos = new ArrayList<>();
@@ -41,5 +46,16 @@ public class Campo extends SpriteContainer{
     //////////////////////////////////
     /// Metodos
     ///
+    
+    public void moverIzquierda(){
+        
+    }
+      public void moverDerecha(){
+        
+    }
+      
+      public void  atraparComida(){
+          
+      }
     
 }

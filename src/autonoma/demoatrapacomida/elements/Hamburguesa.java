@@ -10,6 +10,10 @@ package autonoma.demoatrapacomida.elements;
  * @since 20250516
  * @version 1.0.0
  */
-public class Hamburguesa {
+public class Hamburguesa extends Comida {
+    
+    public Hamburguesa(int x, int y, int height, int width) {
+        super(x, y, height, width);
+    }
     
 }
