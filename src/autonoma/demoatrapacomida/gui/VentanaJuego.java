@@ -32,7 +32,6 @@ public class VentanaJuego extends javax.swing.JDialog implements GraphicContaine
         
         initComponents();
         this.juego = juego;
-        
 
         this.setSize(800,800);
          setResizable(false);
