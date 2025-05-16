@@ -4,13 +4,29 @@
  */
 package autonoma.demoatrapacomida.elements;
 
-/**
- * 
- * @author Heily Yohana Rios Ayala <heilyy.riosa@gmail.com>
- * @since 20250516
- * @version 1.0.0
- */
+import java.util.ArrayList;
 
+  /**
+ *
+  * @author Mateo Quintero <mateo.quinterom@autonoma.edu.co>
+ * @version 1.0.0
+ * @since 20250501
+ * @see autonoma.emoatrapacomida..elements
+ */
 public class Campo {
-    
+
+    ////////////////////////////////
+    /// Atributos
+    ///
+    public ArrayList<Comida> comidas;
+    public ArrayList<Veneno> venenos;
+    public Jugador jugador;
+
+    public Campo(Jugador jugador) {
+        this.jugador = jugador;
+        this. comidas  = new ArrayList<>();
+        this.venenos = new ArrayList<>();
+        
+    }
+
 }

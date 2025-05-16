@@ -5,7 +5,9 @@
         <group>
             <file>file:/C:/Users/mateo/Documents/NetBeansProjects/DemoAtrapaComidaGame/src/autonoma/demoatrapacomida/elements/SpriteContainer.java</file>
             <file>file:/C:/Users/mateo/Documents/NetBeansProjects/DemoAtrapaComidaGame/src/autonoma/demoatrapacomida/elements/GraphicContainer.java</file>
+            <file>file:/C:/Users/mateo/Documents/NetBeansProjects/DemoAtrapaComidaGame/src/autonoma/demoatrapacomida/elements/Jugador.java</file>
             <file>file:/C:/Users/mateo/Documents/NetBeansProjects/DemoAtrapaComidaGame/src/autonoma/demoatrapacomida/elements/Sprite.java</file>
+            <file>file:/C:/Users/mateo/Documents/NetBeansProjects/DemoAtrapaComidaGame/src/autonoma/demoatrapacomida/elements/Campo.java</file>
             <file>file:/C:/Users/mateo/Documents/NetBeansProjects/DemoAtrapaComidaGame/src/autonoma/demoatrapacomida/elements/Puntaje.java</file>
             <file>file:/C:/Users/mateo/Documents/NetBeansProjects/DemoAtrapaComidaGame/src/autonoma/demoatrapacomida/elements/VideoJuego.java</file>
         </group>
