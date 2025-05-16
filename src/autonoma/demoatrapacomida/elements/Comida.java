@@ -8,7 +8,10 @@ import java.awt.Graphics;
 
 /**
  *
- * @author Maria Paz Puerta
+ * @author Maria Paz Puerta Acevedo <mariap.puertaa@sutonoma.edu.co>
+ * @since 20250516
+ * @version 1.0.0
+ * 
  */
 class Comida extends SpriteMobile {
     
