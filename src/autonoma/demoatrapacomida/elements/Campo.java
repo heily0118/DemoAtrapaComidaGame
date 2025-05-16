@@ -28,10 +28,4 @@ public class Campo {
         this.venenos = new ArrayList<>();
         
     }
-<<<<<<< HEAD
-    
-    
-=======
-
->>>>>>> 119ab9ec607b5078b45c8a3b01c4db92eca9d2c8
 }
