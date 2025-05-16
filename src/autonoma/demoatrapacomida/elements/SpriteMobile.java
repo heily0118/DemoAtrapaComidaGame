@@ -10,73 +10,50 @@ package autonoma.demoatrapacomida.elements;
  * @since 20250516
  * @version 1.0.0
  */
-public abstract class SpriteMobile extends Sprite {
-
-    /**
-     * Velocidad en el eje X.
-     */
-    private int velocidadX;
-
-    /**
-     * Velocidad en el eje Y.
-     */
-    private int velocidadY;
+public abstract class SpriteMobile extends Sprite implements Runnable {
+    protected boolean running;
+    protected boolean pausa;
     
-
-    /**
-     * Constructor de la clase SpriteMobile.
-     * @param x Es la posición en x.
-     * @param y Es la posición en y.
-     * @param height Es el ancho del sprite.
-     * @param width Es el alto del sprite.
-     */
-    public SpriteMobile(int x, int y, int height, int width) {
-        super(x, y, height, width);
-        this.velocidadX = 0;
-        this.velocidadY = 0;
+    protected long delay;
+    protected Thread hilo;
+    
+   
+    
+    
+    public SpriteMovil(int x, int y, int width, int height) {
+        super(x, y, width, height);
+        
+        hilo = new Thread(this);
+        
+     
+        
+        delay = 500;
+        running = false;
+        pausa = false;
+        
+        
     }
 
-    /**
-     * Obtiene la velocidad en el eje X.
-     * 
-     * @return Retorna la velocidad en X.
-     */
-    public int getVelocidadX() {
-        return velocidadX;
+    public abstract boolean mover();
+
+    
+    public boolean isRunning() {
+        return running;
     }
 
-    /**
-     * Establece la velocidad en el eje X.
-     * 
-     * @param velocidadX Es la nueva velocidad en X.
-     */
-    public void setVelocidadX(int velocidadX) {
-        this.velocidadX = velocidadX;
+    public void parar() {
+        this.running = false;
     }
 
-    /**
-     * Obtiene la velocidad en el eje Y.
-     * 
-     * @return Retorna la velocidad en Y.
-     */
-    public int getVelocidadY() {
-        return velocidadY;
+    public boolean isPausa() {
+        return pausa;
     }
 
-    /**
-     * Establece la velocidad en el eje Y.
-     * 
-     * @param velocidadY Es la nueva velocidad en Y.
-     */
-    public void setVelocidadY(int velocidadY) {
-        this.velocidadY = velocidadY;
-    } 
-
-    /**
-     * Mueve el sprite actual en el campo, según su velocidad.
-     */
-    public void mover(){
-       this.x += this.velocidadX;
-       this.y += this.velocidadY; 
-    }      
+    public void pausar () {
+        this.pausa = true;
+    }
+    
+    public void dePausar () {
+        this.pausa = false;
+    }
 }
