@@ -5,6 +5,7 @@
 package autonoma.demoatrapacomida.main;
 
 import autonoma.demoatrapacomida.elements.VideoJuego;
+import autonoma.demoatrapacomida.gui.VentanaJuego;
 import autonoma.demoatrapacomida.gui.VentanaPrincipal;
 
 /**
@@ -19,6 +20,8 @@ public class DemoAtrapaComida {
     public static void main(String[] args) {
         
         VideoJuego juego = new VideoJuego();
+        
+
         
         VentanaPrincipal ventana = new VentanaPrincipal (juego);
          ventana.setVisible(true);
