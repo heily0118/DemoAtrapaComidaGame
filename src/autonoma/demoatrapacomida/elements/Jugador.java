@@ -4,6 +4,7 @@
  */
 package autonoma.demoatrapacomida.elements;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
@@ -143,8 +144,9 @@ public class Jugador extends SpriteMobile{
     }
 
     @Override
-    public void paint(Graphics g) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void paint(Graphics g){ 
+            
+        g.drawImage(jugadorImage, x, y, width, height, null);
     }
 
 }

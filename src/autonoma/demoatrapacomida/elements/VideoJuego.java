@@ -4,6 +4,8 @@
  */
 package autonoma.demoatrapacomida.elements;
 
+import autonoma.demoatrapacomida.elements.Campo;
+import autonoma.demoatrapacomida.elements.Jugador;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
@@ -49,9 +51,6 @@ public class VideoJuego {
         campo.manejarEventoTeclado(code);
         
         }
-<<<<<<< HEAD
-}
-=======
     }
     
     
@@ -64,6 +63,4 @@ public class VideoJuego {
            
     }
     
-    
->>>>>>> aac758543183e5d21d874e30b6a986ecefe0f7a0
 }
