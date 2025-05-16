@@ -38,6 +38,16 @@ public class Campo extends SpriteContainer{
     public Jugador getJugador() {
         return jugador;
     }
+
+    public ArrayList<Comida> getComidas() {
+        return comidas;
+    }
+
+    public ArrayList<Veneno> getVenenos() {
+        return venenos;
+    }
+    
+   
     
     //////////////////////////////////
     /// Metodos

@@ -7,6 +7,7 @@ package autonoma.demoatrapacomida.elements;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 /**
@@ -68,8 +69,44 @@ public class Jugador extends SpriteMobile{
     /// Metodos
     ///
 
-    public void atraparComida(){
+    public void atraparComida(ArrayList<Comida> comidas, ArrayList<Veneno> venenos){
     
+   
+       
+        //se hace un ciclo de las comidas par ver si el jugador esta encima de una  
+        for (Comida comida : comidas) {
+            
+            ///se verifica si esa comida esta ensima del jugador
+            if (checkCollision(comida)) {
+                
+                //se elemina esa comida en especifico
+                comidas.remove(comida);
+                
+                puntaje.aumentarPuntaje(comida.getValor());
+                
+            }
+        }
+        
+        
+        //se hace un ciclo de las comidas par ver si el jugador esta encima de una  
+        for (Veneno veneno : venenos) {
+            
+            ///se verifica si esa comida esta ensima del jugador
+            if (checkCollision(veneno)) {
+                
+                //se elemina esa comida en especifico
+                venenos.remove(veneno);
+                puntaje.dismuirPuntaje(veneno.getValor());
+            }
+        }
+        
+        
+        
+        
+        
+        
+        
+        
     }
     public void move(int direction)
     {

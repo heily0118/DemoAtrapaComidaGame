@@ -4,12 +4,17 @@
  */
 package autonoma.demoatrapacomida.gui;
 
+import autonoma.demoatrapacomida.elements.Comida;
 import autonoma.demoatrapacomida.elements.GraphicContainer;
+import autonoma.demoatrapacomida.elements.Jugador;
+
 import autonoma.demoatrapacomida.elements.VideoJuego;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 /**
@@ -58,6 +63,11 @@ public class VentanaJuego extends javax.swing.JDialog implements GraphicContaine
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -72,6 +82,29 @@ public class VentanaJuego extends javax.swing.JDialog implements GraphicContaine
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        
+    // Verifica si el botón izquierdo del mouse fue presionado
+    if (evt.getButton() == MouseEvent.BUTTON1) {
+        // Aquí va el código que deseas ejecutar al hacer clic izquierdo
+        System.out.println("¡Clic izquierdo detectado!");
+        
+        /* al dar clik se va hacer lo siguente
+        primero se va ver si el jugador esta encima en uno de los objetos
+        y eso se hace en el metodo de atrapar comida 
+        
+        y ese metodo va recicibir la lista de comidas y venenos 
+        */
+        
+        //se crea un jugador de estudio
+       juego.getCampo().getJugador().atraparComida(juego.getCampo().getComidas(), juego.getCampo().getVenenos());
+                
+
+       
+    }
+        
+    }//GEN-LAST:event_formMouseClicked
 
         @Override
     public void paint(Graphics g) {
