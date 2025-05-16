@@ -6,7 +6,7 @@ package autonoma.demoatrapacomida.elements;
 
 /**
  *
- * @author mateo
+ * @author 
  */
 class Comida {
     
