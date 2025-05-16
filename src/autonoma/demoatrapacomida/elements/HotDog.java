@@ -11,6 +11,10 @@ package autonoma.demoatrapacomida.elements;
  * @version 1.0.0
  */
 
-public class HotDog {
+public class HotDog extends Comida {
+    
+    public HotDog(int x, int y, int height, int width) {
+        super(x, y, height, width);
+    }
     
 }
