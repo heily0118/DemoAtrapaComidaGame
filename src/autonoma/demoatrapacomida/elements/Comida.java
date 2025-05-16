@@ -26,10 +26,11 @@ public abstract class Comida extends SpriteMobile {
 
     /**
      * Constructor de la clase Comida.
-     * @param x
-     * @param y
-     * @param height
-     * @param width 
+     * @param x Es la posición en x.
+     * @param y Es la posición en y.
+     * @param height Es el ancho del sprite.
+     * @param width Es el alto del sprite.
+     * @param nombre Es el nombre de la comida.
      */
     public Comida(int x, int y, int height, int width, String nombre) {
         super(x, y, height, width);
