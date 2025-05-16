@@ -11,7 +11,7 @@ import java.util.ArrayList;
   * @author Mateo Quintero <mateo.quinterom@autonoma.edu.co>
  * @version 1.0.0
  * @since 20250501
- * @see autonoma.emoatrapacomida..elements
+ * @see autonoma.emoatrapacomida.elements
  */
 public class Campo {
 

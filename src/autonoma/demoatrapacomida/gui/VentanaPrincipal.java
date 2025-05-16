@@ -6,6 +6,7 @@ package autonoma.demoatrapacomida.gui;
 
 import autonoma.demoatrapacomida.elements.GraphicContainer;
 import autonoma.demoatrapacomida.elements.VideoJuego;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import javax.swing.ImageIcon;
@@ -36,7 +37,9 @@ public class VentanaPrincipal extends javax.swing.JFrame implements GraphicConta
             System.out.println("Imagen no encontrada");
             
         }
-        
+
+        Graphics g = null;
+        this.paint(g);
         
     }
 
@@ -65,10 +68,13 @@ public class VentanaPrincipal extends javax.swing.JFrame implements GraphicConta
         pack();
     }// </editor-fold>                        
 
-   
-    // Variables declaration - do not modify                     
-    // End of variables declaration                   
+                  
 
+        public void dibujar(Graphics g) {
+        g.setColor(new Color(34, 139, 34));  
+        g.fillRect(0, 0, 900, 900); 
+        }
+    
     @Override
     public void refresh(Graphics g) {
         
