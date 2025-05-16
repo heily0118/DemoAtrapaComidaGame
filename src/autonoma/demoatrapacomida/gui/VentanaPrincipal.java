@@ -86,17 +86,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
 
 
-    
-    @Override
-    public void refresh(Graphics g) {
-        
-        this.repaint();
-    }
-
-    @Override
-    public Rectangle getBoundaries() {
-       return this.getBounds();
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
