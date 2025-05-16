@@ -27,11 +27,12 @@ public class VentanaJuego extends javax.swing.JDialog implements GraphicContaine
     
     private VideoJuego juego;
     
-    public VentanaJuego(java.awt.Frame parent, boolean modal) {
+    public VentanaJuego(java.awt.Frame parent, boolean modal,VideoJuego juego) {
         super(parent, modal);
-        initComponents();
         
+        initComponents();
         this.juego = juego;
+        
 
         this.setSize(800,800);
          setResizable(false);
@@ -81,8 +82,7 @@ public class VentanaJuego extends javax.swing.JDialog implements GraphicContaine
         
         g.setColor(Color.BLACK);
         g.setFont(new Font("Arial", Font.BOLD, 24));
-        g.drawString(juego.getCampo().getJugador().getNombre(), 25, 80);
-        g.drawString("PUNTAJE", 25, 100);
+        g.drawString("PUNTAJE", 25, 80);
         g.drawString(String.valueOf(juego.getCampo().getJugador().getPuntaje().getPuntajeActual()), 150, 0);
     }
 

@@ -25,14 +25,10 @@ public class Campo extends SpriteContainer{
     
     
     /////////////////////////////////
-    /// Constructor
-<<<<<<< HEAD
-
+    /// Constructo
     public Campo(Jugador jugador) {
-=======
-    ////
-    public Campo() {
->>>>>>> 52037d87bc7ce949d48a69c6c8a926f9d796b20d
+        
+        super(0,0,0,0);
         this.jugador = jugador;
         this. comidas  = new ArrayList<>();
         this.venenos = new ArrayList<>();
