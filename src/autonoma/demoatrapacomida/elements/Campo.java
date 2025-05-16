@@ -4,6 +4,7 @@
  */
 package autonoma.demoatrapacomida.elements;
 
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
   /**
@@ -53,15 +54,11 @@ public class Campo extends SpriteContainer{
     /// Metodos
     ///
     
-    public void moverIzquierda(){
-        
+    public void manejarEventoTeclado(int code){
+     
+
+          jugador.move(code);
+    
     }
-      public void moverDerecha(){
-        
-    }
-      
-      public void  atraparComida(){
-          
-      }
     
 }

@@ -13,8 +13,12 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 
 /**
@@ -68,6 +72,11 @@ public class VentanaJuego extends javax.swing.JDialog implements GraphicContaine
                 formMouseClicked(evt);
             }
         });
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,13 +107,38 @@ public class VentanaJuego extends javax.swing.JDialog implements GraphicContaine
         */
         
         //se crea un jugador de estudio
-       juego.getCampo().getJugador().atraparComida(juego.getCampo().getComidas(), juego.getCampo().getVenenos());
+       juego.getCampo().getJugador().atraparComida(juego.getCampo().getComidas());
+       juego.getCampo().getJugador().atraparVeneno(juego.getCampo().getVenenos());
                 
 
        
     }
         
     }//GEN-LAST:event_formMouseClicked
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        
+        
+        if(evt.getKeyCode() == KeyEvent.VK_Q)
+        {
+            System.exit(0);
+        }
+        
+        if(evt.getKeyCode() == KeyEvent.VK_UP |
+           evt.getKeyCode() == KeyEvent.VK_DOWN |
+           evt.getKeyCode() == KeyEvent.VK_LEFT |
+           evt.getKeyCode() == KeyEvent.VK_RIGHT)
+        {
+            
+            
+            try {
+                juego.manejarEventoTeclado(evt.getKeyCode());
+            } catch (IOException ex) {
+                Logger.getLogger(VentanaJuego.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+    }//GEN-LAST:event_formKeyPressed
 
         @Override
     public void paint(Graphics g) {

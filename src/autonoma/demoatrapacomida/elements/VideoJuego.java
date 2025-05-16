@@ -38,17 +38,15 @@ public class VideoJuego {
        
     }
 
-    public void manejarEventoTeclado(KeyEvent e) throws IOException {
-        switch (e.getKeyCode()) {
-            case KeyEvent.VK_P:
-                campo.atraparComida();
-                break;
-            case KeyEvent.VK_M:
-                campo.moverIzquierda();
-                break;
-            case KeyEvent.VK_S:
-                campo.moverDerecha(); 
-                break;
+    public void manejarEventoTeclado(int code) throws IOException {
+        
+        if(code == KeyEvent.VK_UP |
+           code == KeyEvent.VK_DOWN |
+           code == KeyEvent.VK_LEFT |
+           code == KeyEvent.VK_RIGHT)
+        {
+        campo.manejarEventoTeclado(code);
+        
         }
-    }
+}
 }

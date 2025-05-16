@@ -69,7 +69,7 @@ public class Jugador extends SpriteMobile{
     /// Metodos
     ///
 
-    public void atraparComida(ArrayList<Comida> comidas, ArrayList<Veneno> venenos){
+    public void atraparComida(ArrayList<Comida> comidas){
     
    
        
@@ -86,6 +86,12 @@ public class Jugador extends SpriteMobile{
                 
             }
         }
+        
+        
+
+    }   
+    public void atraparVeneno(ArrayList<Veneno> venenos){
+    
         
         
         //se hace un ciclo de las comidas par ver si el jugador esta encima de una  
@@ -105,15 +111,13 @@ public class Jugador extends SpriteMobile{
         
         
         
-        
-        
     }
-    public void move(int direction)
+    public void move(int direccion)
     {
         int nx = x;
         int ny = y;
         
-        switch(direction)
+        switch(direccion )
         {
             case KeyEvent.VK_UP:
                 ny -= pasos;
