@@ -10,8 +10,7 @@ package autonoma.demoatrapacomida.elements;
  * @since 20250516
  * @version 1.0.0
  */
-public class VideoJuego {
-    private Campo campo;
-    
+
+public class Campo {
     
 }
