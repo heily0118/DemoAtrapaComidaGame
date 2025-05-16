@@ -4,6 +4,9 @@
  */
 package autonoma.demoatrapacomida.elements;
 
+import java.awt.Graphics;
+import java.awt.Image;
+
 /**
  *
  * @author Maria Paz Puerta Acevedo <mariap.puertaa@autonoma.edu.co>
@@ -23,6 +26,13 @@ public abstract class Comida extends SpriteMobile {
      */
     private int valor = 1;
     
+    /**
+     * 
+     * Imagen que representa visualmente la comida en el juego.
+     * 
+     */
+    protected Image comidaImage;
+    
 
     /**
      * Constructor de la clase Comida.
@@ -32,9 +42,21 @@ public abstract class Comida extends SpriteMobile {
      * @param width Es el alto del sprite.
      * @param nombre Es el nombre de la comida.
      */
-    public Comida(int x, int y, int height, int width, String nombre) {
+    public Comida(int x, int y, int height, int width, String nombre, Image comidaImage) {
         super(x, y, height, width);
         this.nombre = nombre;
+        this.comidaImage = comidaImage;
+    }
+    
+    /**
+     * Dibuja la imagen de la comida en pantalla si está visible.
+     * 
+     * @param g el objeto Graphics utilizado para dibujar la comida.
+     */
+    public void dibujar(Graphics g) {
+        if (isVisible() && comidaImage != null) {
+            g.drawImage(comidaImage, x, y, width, height, null);  
+        }
     }
     
     /**
