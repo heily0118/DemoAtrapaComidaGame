@@ -4,6 +4,7 @@
  */
 package autonoma.demoatrapacomida.elements;
 
+import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 
@@ -51,4 +52,16 @@ public class VideoJuego {
                 break;
         }
     }
+    
+    
+      /**
+     * Dibuja todos los elementos del campo en pantalla.
+     * 
+     * @param g Objeto gráfico para dibujar
+     */
+    public void dibujarElementos(Graphics g) {
+           
+    }
+    
+    
 }
