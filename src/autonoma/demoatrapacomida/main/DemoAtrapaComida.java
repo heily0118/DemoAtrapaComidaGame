@@ -4,17 +4,25 @@
  */
 package autonoma.demoatrapacomida.main;
 
+import autonoma.demoatrapacomida.elements.VideoJuego;
+import autonoma.demoatrapacomida.gui.VentanaPrincipal;
+
 /**
- *
- * @author USUARIO
+ * 
+ * @author Heily Yohana Rios Ayala <heilyy.riosa@gmail.com>
+ * @since 20250516
+ * @version 1.0.0
  */
 public class DemoAtrapaComida {
 
-    /**
-     * @param args the command line arguments
-     */
+   
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        VideoJuego juego = new VideoJuego();
+        
+        VentanaPrincipal ventana = new VentanaPrincipal (juego);
+         ventana.setVisible(true);
+       
     }
     
 }
