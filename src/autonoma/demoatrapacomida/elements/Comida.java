@@ -6,7 +6,7 @@ package autonoma.demoatrapacomida.elements;
 
 /**
  *
- * @author 
+ * @author Maria Paz Puerta
  */
 class Comida {
     

@@ -5,7 +5,7 @@
 package autonoma.demoatrapacomida.elements;
 
 /**
- * @author Heily Yohana Rios Ayala <heilyy.riosa@gmail.com>
+ * @author Maria Paz Puerta
  * @since 20250516
  * @version 1.0.0
  */

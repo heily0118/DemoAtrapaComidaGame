@@ -5,9 +5,11 @@
 package autonoma.demoatrapacomida.elements;
 
 /**
- *
- * @author Maria Paz Puerta
+ * 
+ * @author Heily Yohana Rios Ayala <heilyy.riosa@gmail.com>
+ * @since 20250516
+ * @version 1.0.0
  */
-class Veneno {
+public class Hamburguesa {
     
 }
