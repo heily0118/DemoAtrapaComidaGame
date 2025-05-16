@@ -38,8 +38,7 @@ public class VentanaPrincipal extends javax.swing.JFrame implements GraphicConta
             
         }
 
-        Graphics g = null;
-        this.paint(g);
+
         
     }
 
@@ -70,10 +69,16 @@ public class VentanaPrincipal extends javax.swing.JFrame implements GraphicConta
 
                   
 
-        public void dibujar(Graphics g) {
-        g.setColor(new Color(34, 139, 34));  
-        g.fillRect(0, 0, 900, 900); 
-        }
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g); // Llama al método de la clase padre para asegurar que se dibuje el fondo
+        dibujar(g); // Llama a tu método dibujar
+    }
+
+    public void dibujar(Graphics g) {
+        g.setColor(new Color(34, 139, 34));
+        g.fillRect(0, 0, 900, 900);
+    }
     
     @Override
     public void refresh(Graphics g) {
