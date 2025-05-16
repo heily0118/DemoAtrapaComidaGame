@@ -4,16 +4,19 @@
  */
 package autonoma.demoatrapacomida.gui;
 
+import autonoma.demoatrapacomida.elements.VideoJuego;
+
 /**
  *
  * @author USUARIO
  */
 public class VentanaInformacion extends javax.swing.JDialog {
+    private VideoJuego juego;
 
     /**
      * Creates new form VentanaInformacion
      */
-    public VentanaInformacion(java.awt.Frame parent, boolean modal) {
+    public VentanaInformacion(java.awt.Frame parent, boolean modal,VideoJuego juego) {
         super(parent, modal);
         initComponents();
     }

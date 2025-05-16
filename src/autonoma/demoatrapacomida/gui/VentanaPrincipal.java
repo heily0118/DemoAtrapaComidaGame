@@ -8,7 +8,9 @@ import autonoma.demoatrapacomida.elements.VideoJuego;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -16,38 +18,39 @@ import javax.swing.JOptionPane;
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
 
-   private ImageIcon fondo;
-    
+  
     private VideoJuego juego;
     
     public VentanaPrincipal(VideoJuego juego) {
-        initComponents();
-        
         this.juego = juego;
-        this.setSize(800,800);
-         setResizable(false);
-        this.setLocationRelativeTo(null);
- 
-        
-        try {
-         this.setIconImage(new ImageIcon(getClass().getResource("/autonoma/demoatrapacomida/images/Logo.jpeg")).getImage());
-         this.fondo = new ImageIcon(getClass().getResource("/autonoma/demoatrapacomida/images/Portada.jpeg"));
+        setTitle("Atrapa Comida");
+        setSize(800, 800);
+        setLocationRelativeTo(null);
+        setResizable(false);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-         javax.swing.JPanel panelFondo = new javax.swing.JPanel() {
-             @Override
-             protected void paintComponent(Graphics g) {
-                 super.paintComponent(g);
-                 g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
-             }
-         };
-         panelFondo.setLayout(null);
-         this.setContentPane(panelFondo);
-     } catch (NullPointerException e) {
-         System.out.println("Imagen no encontrada");
-     }
+        ImageIcon fondo = new ImageIcon(getClass().getResource("/autonoma/demoatrapacomida/images/Portada.jpeg"));
 
-        
+        JPanel panelFondo = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
+            }
+        };
+        panelFondo.setLayout(null);
+
+        JButton botonJugar = new JButton("Jugar");
+        botonJugar.setBounds(340, 600, 120, 40);
+        botonJugar.addActionListener(e -> {
+            new VentanaInformacion(this, true, juego).setVisible(true);
+            dispose();
+        });
+
+        panelFondo.add(botonJugar);
+        setContentPane(panelFondo);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -57,44 +60,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        boton = new javax.swing.JButton();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        boton.setText("BotonVerElJuego");
-        boton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(114, 114, 114)
-                .addComponent(boton)
-                .addContainerGap(166, Short.MAX_VALUE))
+            .addGap(0, 399, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(225, Short.MAX_VALUE)
-                .addComponent(boton)
-                .addGap(52, 52, 52))
+            .addGap(0, 300, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void botonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonActionPerformed
-        
-       VentanaJuego ventaEperimental = new VentanaJuego(this, true,juego);
-        
-        ventaEperimental.setVisible(true);
-        
-    }//GEN-LAST:event_botonActionPerformed
     private void pedirNombreJugador() {
             while (true) {
             String nombre = JOptionPane.showInputDialog(this, "Ingresa tu nombre:");
@@ -111,6 +91,5 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton boton;
     // End of variables declaration//GEN-END:variables
 }
