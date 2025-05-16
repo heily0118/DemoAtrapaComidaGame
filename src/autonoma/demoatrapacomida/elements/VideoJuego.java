@@ -15,7 +15,10 @@ public class VideoJuego {
     private Campo campo;
 
     public VideoJuego() {
-        this.campo = campo;
+        
+        Jugador j = new Jugador("");
+        Campo c = new Campo(j);
+        this.campo = c;
     }
 
     public Campo getCampo() {

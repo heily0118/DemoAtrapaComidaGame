@@ -6,9 +6,12 @@ package autonoma.demoatrapacomida.gui;
 
 import autonoma.demoatrapacomida.elements.GraphicContainer;
 import autonoma.demoatrapacomida.elements.VideoJuego;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  * 
@@ -19,12 +22,14 @@ import javax.swing.ImageIcon;
 
 public class VentanaPrincipal extends javax.swing.JFrame implements GraphicContainer  {
 
-
+    
+    private VideoJuego juego;
     public VentanaPrincipal(VideoJuego juego) {
         initComponents();
         
-        
-        this.setSize(900,900);
+        this.juego = juego;
+        pedirNombreJugador();
+        this.setSize(800,800);
          setResizable(false);
         this.setLocationRelativeTo(null);
         
@@ -36,7 +41,8 @@ public class VentanaPrincipal extends javax.swing.JFrame implements GraphicConta
             System.out.println("Imagen no encontrada");
             
         }
-        
+
+
         
     }
 
@@ -65,10 +71,40 @@ public class VentanaPrincipal extends javax.swing.JFrame implements GraphicConta
         pack();
     }// </editor-fold>                        
 
-   
-    // Variables declaration - do not modify                     
-    // End of variables declaration                   
+     
+    private void pedirNombreJugador() {
+            while (true) {
+            String nombre = JOptionPane.showInputDialog(this, "Ingresa tu nombre:");
+            if (nombre != null && !nombre.trim().isEmpty()) {
+                this.juego.getCampo().getJugador().setNombre(nombre.trim());
+                break;
+            } else {
+                JOptionPane.showMessageDialog(this, "Debes ingresar un nombre para continuar.");
+            }
+        }
+    }
+    
 
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g); // Llama al método de la clase padre para asegurar que se dibuje el fondo
+        dibujar(g); // Llama a tu método dibujar
+        
+        
+        g.setColor(Color.BLACK);
+        g.setFont(new Font("Arial", Font.BOLD, 24));
+        g.drawString(juego.getCampo().getJugador().getNombre(), 25, 80);
+        g.drawString("PUNTAJE", 25, 100);
+        g.drawString(String.valueOf(juego.getCampo().getJugador().getPuntaje().getPuntajeActual()), 150, 100);
+    }
+
+    public void dibujar(Graphics g) {
+        
+        
+        g.setColor(new Color(34, 139, 34));
+        g.fillRect(0, 0, 800, 800);
+    }
+    
     @Override
     public void refresh(Graphics g) {
         
