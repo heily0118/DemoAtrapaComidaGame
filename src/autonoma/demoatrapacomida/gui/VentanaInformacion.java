@@ -5,6 +5,7 @@
 package autonoma.demoatrapacomida.gui;
 
 import autonoma.demoatrapacomida.elements.VideoJuego;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -17,8 +18,46 @@ public class VentanaInformacion extends javax.swing.JDialog {
      * Creates new form VentanaInformacion
      */
     public VentanaInformacion(java.awt.Frame parent, boolean modal,VideoJuego juego) {
-        super(parent, modal);
-        initComponents();
+         super(parent, modal);
+        this.juego = juego;
+        setTitle("Atrapa Comida");
+        setSize(800, 800);
+        setLocationRelativeTo(null);
+        setResizable(false);
+
+        
+        this.setIconImage(new ImageIcon(getClass().getResource("/autonoma/demoatrapacomida/images/Logo.jpeg")).getImage());
+
+       
+        ImageIcon fondo = new ImageIcon(getClass().getResource("/autonoma/demoatrapacomida/images/FondoInformacion.jpeg"));
+        javax.swing.JPanel panelFondo = new javax.swing.JPanel() {
+            @Override
+            protected void paintComponent(java.awt.Graphics g) {
+                super.paintComponent(g);
+                g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
+            }
+        };
+        panelFondo.setLayout(null);
+
+        
+        javax.swing.JButton btnIniciar = new javax.swing.JButton("Iniciar juego");
+        btnIniciar.setBounds(300, 600, 200, 40);
+        btnIniciar.addActionListener(e -> {
+          
+            dispose();
+        });
+
+      
+        javax.swing.JButton btnReiniciar = new javax.swing.JButton("Reiniciar juego");
+        btnReiniciar.setBounds(300, 650, 200, 40);
+        btnReiniciar.addActionListener(e -> {
+         
+          
+        });
+
+        panelFondo.add(btnIniciar);
+        panelFondo.add(btnReiniciar);
+        setContentPane(panelFondo);
     }
 
     /**
