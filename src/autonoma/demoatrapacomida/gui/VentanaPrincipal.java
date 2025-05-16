@@ -4,7 +4,11 @@
  */
 package autonoma.demoatrapacomida.gui;
 
+import autonoma.demoatrapacomida.elements.GraphicContainer;
 import autonoma.demoatrapacomida.elements.VideoJuego;
+import java.awt.Graphics;
+import java.awt.Rectangle;
+import javax.swing.ImageIcon;
 
 /**
  * 
@@ -13,13 +17,27 @@ import autonoma.demoatrapacomida.elements.VideoJuego;
  * @version 1.0.0
  */
 
-public class VentanaPrincipal extends javax.swing.JFrame {
+public class VentanaPrincipal extends javax.swing.JFrame implements GraphicContainer  {
 
-    /**
-     * Creates new form VentanaPrincipal
-     */
+
     public VentanaPrincipal(VideoJuego juego) {
         initComponents();
+        
+        
+        this.setSize(900,900);
+         setResizable(false);
+        this.setLocationRelativeTo(null);
+        
+        
+        try{ 
+        this.setIconImage(new ImageIcon(getClass().getResource("/autonoma/DemoAtrapaComida/images/Logo.jpeg")).getImage());
+        
+        }catch(NullPointerException e){
+            System.out.println("Imagen no encontrada");
+            
+        }
+        
+        
     }
 
     /**
@@ -50,4 +68,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
    
     // Variables declaration - do not modify                     
     // End of variables declaration                   
+
+    @Override
+    public void refresh(Graphics g) {
+        
+        this.repaint();
+    }
+
+    @Override
+    public Rectangle getBoundaries() {
+       return this.getBounds();
+    }
 }
