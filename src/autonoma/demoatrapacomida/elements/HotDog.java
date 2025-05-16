@@ -4,6 +4,8 @@
  */
 package autonoma.demoatrapacomida.elements;
 
+import java.awt.Graphics;
+
 /**
  * 
  * @author Heily Yohana Rios Ayala <heilyy.riosa@gmail.com>
@@ -12,9 +14,16 @@ package autonoma.demoatrapacomida.elements;
  */
 
 public class HotDog extends Comida {
-    
-    public HotDog(int x, int y, int height, int width) {
-        super(x, y, height, width);
+
+    public HotDog(int x, int y, int height, int width, String nombre) {
+        super(x, y, height, width, nombre);
     }
+
+    @Override
+    public void paint(Graphics g) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+  
     
 }

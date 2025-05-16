@@ -4,6 +4,11 @@
  */
 package autonoma.demoatrapacomida.elements;
 
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.event.KeyEvent;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author Mateo Quintero <mateo.quinterom@autonoma.edu.co>
@@ -11,7 +16,7 @@ package autonoma.demoatrapacomida.elements;
  * @since 20250501
  * @see autonoma.emoatrapacomida..elements
  */
-public class Jugador {
+public class Jugador extends SpriteMobile{
     
     
     ////////////////////////////////
@@ -19,6 +24,8 @@ public class Jugador {
     ///
     private  Puntaje puntaje;
     private String nombre;
+    private Image jugadorImage;
+    private int pasos = 20;
 
     
     /////////////////////////////////
@@ -26,8 +33,10 @@ public class Jugador {
     ////
     ///
     public Jugador( String nombre) {
+        super(0, 0, 80, 80);
         this.puntaje = new Puntaje();
         this.nombre = nombre;
+        jugadorImage = new ImageIcon(getClass().getResource("/autonoma/DemoAtrapaComida/images/Jugador.jpeg")).getImage();
     }
 
     //////////////////////////////////
@@ -62,8 +71,39 @@ public class Jugador {
     public void atraparComida(){
     
     }
-    public void mover(){
-    
+    public void move(int direction)
+    {
+        int nx = x;
+        int ny = y;
+        
+        switch(direction)
+        {
+            case KeyEvent.VK_UP:
+                ny -= pasos;
+            break;
+
+            case KeyEvent.VK_DOWN:
+                ny += pasos;
+            break;
+
+            case KeyEvent.VK_LEFT:
+                nx -= pasos;
+            break;
+
+            case KeyEvent.VK_RIGHT:
+                nx += pasos;
+            break;
+        }
+        
+        
+
+        
+      
+    }
+
+    @Override
+    public void paint(Graphics g) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }

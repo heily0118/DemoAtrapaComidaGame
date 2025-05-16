@@ -4,6 +4,8 @@
  */
 package autonoma.demoatrapacomida.elements;
 
+import java.awt.Graphics;
+
 /**
  * 
  * @author Heily Yohana Rios Ayala <heilyy.riosa@gmail.com>
@@ -11,9 +13,16 @@ package autonoma.demoatrapacomida.elements;
  * @version 1.0.0
  */
 public class Hamburguesa extends Comida {
+
+    public Hamburguesa(int x, int y, int height, int width, String nombre) {
+        super(x, y, height, width, nombre);
+    }
     
-    public Hamburguesa(int x, int y, int height, int width) {
-        super(x, y, height, width);
+   
+
+    @Override
+    public void paint(Graphics g) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }
