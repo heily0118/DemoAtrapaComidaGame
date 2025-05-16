@@ -6,96 +6,77 @@ package autonoma.demoatrapacomida.elements;
 
 /**
  * 
- * @author Maria Paz Puerta
+ * @author Maria Paz Puerta Acevedo <mariap.puertaa@sutonoma.edu.co>
  * @since 20250516
  * @version 1.0.0
  */
 public abstract class SpriteMobile extends Sprite {
 
-     /**
-     * Cantidad de vida del sprite. Determina cuántos impactos puede recibir antes de desaparecer.
+    /**
+     * Velocidad en el eje X.
      */
-    protected int vida;
+    private int velocidadX;
 
     /**
-     * Cantidad de píxeles que puede moverse al saltar.
+     * Velocidad en el eje Y.
      */
-    protected int step = 10;
+    private int velocidadY;
+    
 
     /**
-     * Crea un nuevo sprite móvil con la posición y tamaño especificados.
-     *
-     * @param x coordenada horizontal inicial
-     * @param y coordenada vertical inicial
-     * @param height alto del sprite
-     * @param width ancho del sprite
+     * Constructor de la clase SpriteMobile.
+     * @param x Es la posición en x.
+     * @param y Es la posición en y.
+     * @param height Es el ancho del sprite.
+     * @param width Es el alto del sprite.
      */
     public SpriteMobile(int x, int y, int height, int width) {
         super(x, y, height, width);
-        this.visible = true; 
+        this.velocidadX = 0;
+        this.velocidadY = 0;
     }
 
     /**
-     * Devuelve la cantidad de vida actual del sprite.
-     *
-     * @return número de vidas restantes
+     * Obtiene la velocidad en el eje X.
+     * 
+     * @return Retorna la velocidad en X.
      */
-    public int getVida() {
-        return vida;
+    public int getVelocidadX() {
+        return velocidadX;
     }
 
     /**
-     * Establece la cantidad de vida del sprite.
-     *
-     * @param vida valor a asignar
+     * Establece la velocidad en el eje X.
+     * 
+     * @param velocidadX Es la nueva velocidad en X.
      */
-    public void setVida(int vida) {
-        this.vida = vida;
+    public void setVelocidadX(int velocidadX) {
+        this.velocidadX = velocidadX;
     }
 
     /**
-     * Devuelve el valor actual del paso de movimiento (step).
-     *
-     * @return cantidad de píxeles de movimiento
+     * Obtiene la velocidad en el eje Y.
+     * 
+     * @return Retorna la velocidad en Y.
      */
-    public int getStep() {
-        return step;
+    public int getVelocidadY() {
+        return velocidadY;
     }
 
     /**
-     * Establece el valor del paso de movimiento.
-     *
-     * @param step cantidad de píxeles de salto
+     * Establece la velocidad en el eje Y.
+     * 
+     * @param velocidadY Es la nueva velocidad en Y.
      */
-    public void setStep(int step) {
-        this.step = step;
-    }
+    public void setVelocidadY(int velocidadY) {
+        this.velocidadY = velocidadY;
+    } 
 
     /**
-     * Reubica el sprite en una posición aleatoria dentro del campo de batalla.
-     *
-     * @param maxWidth ancho máximo permitido (límite derecho del campo)
-     * @param maxHeight alto máximo permitido (límite inferior del campo)
+     * Mueve el sprite actual en el campo, según su velocidad.
      */
-    public void moverAleatoriamente(int maxWidth, int maxHeight) {
-        this.x = (int)(Math.random() * (maxWidth - this.width));
-        this.y = (int)(Math.random() * (maxHeight - this.height));
-    }
-
-    /**
-     * Método abstracto que define la lógica al recibir un impacto.
-     * Cada subclase debe implementar su propia reacción (por ejemplo,
-     * morir o transformarse).
-     */
-    public abstract void recibirImpacto();
-
-    /**
-     * Indica si el sprite sigue vivo (vida mayor que cero).
-     *
-     * @return true si tiene vida, false si debe eliminarse
-     */
-    public boolean estaViva() {
-        return vida > 0;
-    }
-    
+    public void mover(){
+       this.x += this.velocidadX;
+       this.y += this.velocidadY; 
+    }      
 }
