@@ -7,6 +7,7 @@ package autonoma.demoatrapacomida.gui;
 import autonoma.demoatrapacomida.elements.GraphicContainer;
 import autonoma.demoatrapacomida.elements.VideoJuego;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import javax.swing.ImageIcon;
@@ -21,11 +22,12 @@ import javax.swing.ImageIcon;
 public class VentanaPrincipal extends javax.swing.JFrame implements GraphicContainer  {
 
 
+    private VideoJuego juego;
     public VentanaPrincipal(VideoJuego juego) {
         initComponents();
         
-        
-        this.setSize(900,900);
+        this.juego = juego;
+        this.setSize(800,800);
          setResizable(false);
         this.setLocationRelativeTo(null);
         
@@ -73,11 +75,18 @@ public class VentanaPrincipal extends javax.swing.JFrame implements GraphicConta
     public void paint(Graphics g) {
         super.paint(g); // Llama al método de la clase padre para asegurar que se dibuje el fondo
         dibujar(g); // Llama a tu método dibujar
+        
+        g.setColor(Color.BLACK);
+        g.setFont(new Font("Arial", Font.BOLD, 24));
+        g.drawString("PUNTAJE", 25, 80);
+        g.drawString(String.valueOf(juego.getCampo().getJugador().getPuntaje().getPuntajeActual()), 150, 80);
     }
 
     public void dibujar(Graphics g) {
+        
+        
         g.setColor(new Color(34, 139, 34));
-        g.fillRect(0, 0, 900, 900);
+        g.fillRect(0, 0, 800, 800);
     }
     
     @Override

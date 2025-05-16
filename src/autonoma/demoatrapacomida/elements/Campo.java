@@ -22,10 +22,24 @@ public class Campo {
     public ArrayList<Veneno> venenos;
     public Jugador jugador;
 
+    
+    
+    /////////////////////////////////
+    /// Constructor
+    ////
     public Campo(Jugador jugador) {
         this.jugador = jugador;
         this. comidas  = new ArrayList<>();
         this.venenos = new ArrayList<>();
         
     }
+
+    public Jugador getJugador() {
+        return jugador;
+    }
+    
+    //////////////////////////////////
+    /// Metodos
+    ///
+    
 }
