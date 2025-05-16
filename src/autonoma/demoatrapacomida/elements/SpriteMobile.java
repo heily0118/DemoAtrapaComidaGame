@@ -6,7 +6,7 @@ package autonoma.demoatrapacomida.elements;
 
 /**
  * 
- * @author Maria Paz Puerta Acevedo <mariap.puertaa@sutonoma.edu.co>
+ * @author Maria Paz Puerta Acevedo <mariap.puertaa@autonoma.edu.co>
  * @since 20250516
  * @version 1.0.0
  */

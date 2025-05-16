@@ -5,7 +5,7 @@
 package autonoma.demoatrapacomida.elements;
 
 /**
- * @author Maria Paz Puerta
+ * @author Maria Paz Puerta Acevedo <mariap.puertaa@autonoma.edu.co>
  * @since 20250516
  * @version 1.0.0
  */
@@ -55,14 +55,14 @@ public abstract class SpriteContainer implements GraphicContainer {
     }
 
     /** 
-     * @param sprite sprite a agregar
-     * @return true si fue agregado correctamente
+     * @param sprite Es el sprite a agregar
+     * @return Retorna true si fue agregado correctamente
      */
     public boolean add(Sprite sprite) {
         return sprites.add(sprite);
     }
     /**
-     * @param index índice del sprite a eliminar
+     * @param index Es el índice del sprite a eliminar
      */
     public void remove(int index) {
         sprites.remove(index);
@@ -77,21 +77,28 @@ public abstract class SpriteContainer implements GraphicContainer {
     }
 
     /**
-     * @return número de sprites
+     * @return Retorna el número de sprites
      */
     public int size() {
         return sprites.size();
     }
 
+    /**
+     * Redibuja el contenedor y todos los sprites que contiene.
+     * 
+     * @param g Es el objeto Graphics para pintar
+     */
     @Override
     public void refresh(Graphics g) {
        g.setColor(Color.WHITE);
        g.fillRect(0, 0,  width, height);
-
-     
-
     }
 
+    /**
+     * Retorna los límites del contenedor como un objeto Rectangle.
+     * 
+     * @return Retorna los límites del contenedor.
+     */
     @Override
     public Rectangle getBoundaries() {
         return new Rectangle(x, y, width, height);
