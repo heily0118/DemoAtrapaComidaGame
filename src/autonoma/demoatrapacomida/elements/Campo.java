@@ -6,7 +6,6 @@ package autonoma.demoatrapacomida.elements;
 
 import java.util.ArrayList;
 
-    
   /**
  *
   * @author Mateo Quintero <mateo.quinterom@autonoma.edu.co>
@@ -29,6 +28,10 @@ public class Campo {
         this.venenos = new ArrayList<>();
         
     }
+<<<<<<< HEAD
     
     
+=======
+
+>>>>>>> 119ab9ec607b5078b45c8a3b01c4db92eca9d2c8
 }

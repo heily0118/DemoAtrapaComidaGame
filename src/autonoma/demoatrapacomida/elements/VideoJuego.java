@@ -11,5 +11,7 @@ package autonoma.demoatrapacomida.elements;
  * @version 1.0.0
  */
 public class VideoJuego {
+    private Campo campo;
+    
     
 }
