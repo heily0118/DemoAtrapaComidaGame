@@ -166,6 +166,7 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
             }
         }
         
+        repaint();
     }//GEN-LAST:event_formKeyPressed
 
     @Override
@@ -182,9 +183,11 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
 
         juego.getCampo().getJugador().paint(g);
 
+
     }
 
     public void dibujar(Graphics g) {
+
         if (fondoCampo != null) {
             g.drawImage(fondoCampo, 0, 0, getWidth(), getHeight(), this);
         } else {
@@ -192,11 +195,15 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
             g.setColor(new Color(34, 139, 34));
             g.fillRect(0, 0, 800, 800);
         }
+
     }
 
     @Override
     public void refresh(Graphics g) {
+        
+        juego.dibujarElementos(g); 
         this.repaint();
+
     }
 
     @Override
