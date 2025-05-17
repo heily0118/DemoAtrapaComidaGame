@@ -5,7 +5,13 @@
 package autonoma.demoatrapacomida.gui;
 
 import autonoma.demoatrapacomida.elements.VideoJuego;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Frame;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,52 +19,61 @@ import javax.swing.ImageIcon;
  */
 public class VentanaInformacion extends javax.swing.JDialog {
     private VideoJuego juego;
+    private JLabel labelNombre;
+    private JLabel labelPuntaje;
 
-    /**
-     * Creates new form VentanaInformacion
-     */
-    public VentanaInformacion(java.awt.Frame parent, boolean modal,VideoJuego juego) {
-         super(parent, modal);
-        this.juego = juego;
-        setTitle("Atrapa Comida");
-        setSize(800, 800);
-        setLocationRelativeTo(null);
-        setResizable(false);
+    public VentanaInformacion(Frame parent, boolean modal, VideoJuego juego) {
+            super(parent, modal);
+            this.juego = juego;
+            initComponents();
+            setTitle("Información del Jugador");
+            setSize(800, 800);
+            setLocationRelativeTo(null);
+            setResizable(false);
 
-        
-        this.setIconImage(new ImageIcon(getClass().getResource("/autonoma/demoatrapacomida/images/Logo.jpeg")).getImage());
+            setLayout(null); 
 
-       
-        ImageIcon fondo = new ImageIcon(getClass().getResource("/autonoma/demoatrapacomida/images/FondoInformacion.jpeg"));
-        javax.swing.JPanel panelFondo = new javax.swing.JPanel() {
-            @Override
-            protected void paintComponent(java.awt.Graphics g) {
-                super.paintComponent(g);
-                g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
-            }
-        };
-        panelFondo.setLayout(null);
+            // Fondo
+            JLabel fondo = new JLabel(new ImageIcon(getClass().getResource("/autonoma/demoatrapacomida/images/FondoInformacion.jpeg")));
+            fondo.setBounds(0, 0, 800, 800);
+            setContentPane(fondo);
+            fondo.setLayout(null);
 
-        
-        javax.swing.JButton btnIniciar = new javax.swing.JButton("Iniciar juego");
-        btnIniciar.setBounds(300, 600, 200, 40);
-        btnIniciar.addActionListener(e -> {
-            new VentanaJuego((java.awt.Frame) getParent(), true, juego).setVisible(true);
-            dispose();
-        });
-      
-        javax.swing.JButton btnReiniciar = new javax.swing.JButton("Reiniciar juego");
-        btnReiniciar.setBounds(300, 650, 200, 40);
-        btnReiniciar.addActionListener(e -> {
-         new VentanaJuego((java.awt.Frame) getParent(), true, juego).setVisible(true);
-            dispose();
-          
-        });
+            // Mostrar nombre del jugador
+            String nombre = juego.getCampo().getJugador().getNombre();
+            labelNombre = new JLabel("Jugador: " + nombre);
+            labelNombre.setBounds(50, 30, 300, 30);
+            labelNombre.setFont(new Font("Arial", Font.BOLD, 20));
+            labelNombre.setForeground(Color.WHITE);
+            fondo.add(labelNombre);
 
-        panelFondo.add(btnIniciar);
-        panelFondo.add(btnReiniciar);
-        setContentPane(panelFondo);
-    }
+            // Mostrar puntaje
+            labelPuntaje = new JLabel("Puntaje: " + juego.getCampo().getJugador().getPuntaje());
+            labelPuntaje.setBounds(50, 70, 300, 30);
+            labelPuntaje.setFont(new Font("Arial", Font.BOLD, 20));
+            labelPuntaje.setForeground(Color.WHITE);
+            fondo.add(labelPuntaje);
+
+            // Botón Iniciar Juego
+            JButton btnIniciar = new JButton("Iniciar Juego");
+            btnIniciar.setBounds(200, 220, 180, 35);
+            btnIniciar.addActionListener(e -> {
+                new VentanaJuego((Frame) getParent(), true, juego).setVisible(true);
+                dispose();
+            });
+            fondo.add(btnIniciar);
+
+            // Botón Reiniciar Juego
+            JButton btnReiniciar = new JButton("Reiniciar Juego");
+            btnReiniciar.setBounds(200, 270, 180, 35);
+            btnReiniciar.addActionListener(e -> {
+                
+                JOptionPane.showMessageDialog(this, "El juego ha sido reiniciado.");
+                dispose();
+            });
+            fondo.add(btnReiniciar);
+        }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
