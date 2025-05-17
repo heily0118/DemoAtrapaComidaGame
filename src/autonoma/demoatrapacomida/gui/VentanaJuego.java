@@ -61,6 +61,22 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
             
         }
 
+        javax.swing.Timer timer = new javax.swing.Timer(30, new java.awt.event.ActionListener() {
+               @Override
+               public void actionPerformed(java.awt.event.ActionEvent e) {
+                  
+                   for (Comida c : juego.getCampo().getComidas()) {
+                       c.caer(); 
+                   }
+
+                  
+
+                   repaint(); 
+               }
+           });
+           timer.start();
+    
+
 
         
     }
@@ -122,7 +138,7 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
        
     }
       
-    
+
     
     }//GEN-LAST:event_formMouseClicked
 

@@ -6,6 +6,7 @@ package autonoma.demoatrapacomida.elements;
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import javax.swing.Timer;
 
   /**
  *
@@ -33,6 +34,8 @@ public class Campo extends SpriteContainer{
         this.jugador = jugador;
         this. comidas  = new ArrayList<>();
         this.venenos = new ArrayList<>();
+        
+     
         
     }
 
