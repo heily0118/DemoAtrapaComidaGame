@@ -83,18 +83,19 @@ public class Campo extends SpriteContainer{
         int anchoCampo = getWidth(); 
         int anchoComida = 50;
 
-        int posXHotDog = rand.nextInt(anchoCampo - anchoComida);
-        int posXHamburguesa = rand.nextInt(anchoCampo - anchoComida);
+        for (int i = 0; i < 3; i++) { 
+            int posXHotDog = rand.nextInt(anchoCampo - anchoComida);
+            int posXHamburguesa = rand.nextInt(anchoCampo - anchoComida);
 
-        HotDog h = new HotDog(posXHotDog, 0, 50, 50, "HotDog", null);
-        Hamburguesa b = new Hamburguesa(posXHamburguesa, 0, 50, 50, "Hamburguesa", null);
+            HotDog h = new HotDog(posXHotDog, 0, 50, 50, "HotDog", null);
+            Hamburguesa b = new Hamburguesa(posXHamburguesa, 0, 50, 50, "Hamburguesa", null);
 
-        comidas.add(h);
-        comidas.add(b);
+            comidas.add(h);
+            comidas.add(b);
 
-        new Thread(h).start();
-        new Thread(b).start();
-        
+            new Thread(h).start();
+            new Thread(b).start();
+        }
     }
     
     public void agregarVeneno(){
@@ -102,7 +103,7 @@ public class Campo extends SpriteContainer{
         int anchoCampo = getWidth(); 
         int anchoCigarrillo = 50;
 
-        for (int i = 0; i < 2; i++) {  // Bucle para agregar 2 venenos
+        for (int i = 0; i < 3; i++) {  
            int posX = rand.nextInt(anchoCampo - anchoCigarrillo);
             Veneno v = new Veneno(posX, 0, 50, 50);
             venenos.add(v);

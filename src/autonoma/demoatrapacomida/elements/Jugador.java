@@ -24,7 +24,7 @@ public class Jugador extends SpriteMobile{
     ////////////////////////////////
     /// Atributos
     ///
-    private  Puntaje puntaje;
+    private Puntaje puntaje;
     private String nombre;
     private Image jugadorImage;
     private int pasos = 20;
@@ -34,7 +34,7 @@ public class Jugador extends SpriteMobile{
     /// Constructor
     ////
     ///
-    public Jugador( String nombre) {
+    public Jugador(String nombre) {
         super(400, 400, 80, 80);
         this.puntaje = new Puntaje();
         this.nombre = nombre;
@@ -86,7 +86,8 @@ public class Jugador extends SpriteMobile{
                 i--; 
             }
         }
-    }   
+    } 
+    
     public void atraparVeneno(ArrayList<Veneno> venenos){
         if (venenos == null || venenos.isEmpty()) {
             System.out.println("No hay venenos.");
