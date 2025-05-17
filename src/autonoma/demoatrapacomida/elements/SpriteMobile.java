@@ -43,7 +43,7 @@ public abstract class SpriteMobile extends Sprite implements Runnable {
     public SpriteMobile(int x, int y, int width, int height) {
         super(x, y, width, height);
         hilo = new Thread(this);
-        delay = 500;
+        delay = 1000;
         running = false;
         pausa = false;
     }

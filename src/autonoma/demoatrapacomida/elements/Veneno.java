@@ -139,8 +139,7 @@ public class Veneno extends SpriteMobile{
             try {
                 if (!pausa) {
                     caer(); 
-                }
-            
+                }        
                 Thread.sleep(delay);
             } catch (InterruptedException e) {
                 System.out.println("Hilo del veneno interrumpido: " + e.getMessage());
@@ -148,4 +147,14 @@ public class Veneno extends SpriteMobile{
             }
         }
     }
+
+//    /**
+//     * Verifica si el objeto ha salido del área visible del campo de juego.
+//     *
+//     * @return  Retorna true si la posición vertical del objeto es mayor que 800,
+//     *         indicando que ha salido del campo hacia abajo y false en caso contrario.
+//     */
+//    public boolean yaSalioDelCampo() {
+//        return this.getY() > 800;
+//    }
 }

@@ -6,6 +6,7 @@ package autonoma.demoatrapacomida.elements;
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Random;
 import javax.swing.Timer;
 
@@ -36,7 +37,19 @@ public class Campo extends SpriteContainer{
         this. comidas  = new ArrayList<>();
         this.venenos = new ArrayList<>();
         
-     
+        Timer timer = new Timer(500, e -> {
+            if (comidas.size() < 4) {
+                agregarComidas();
+            }
+            
+            if (venenos.size() < 4) {
+                agregarVeneno();
+            }
+            
+//            actualizarComidas();
+//            actualizarVenenos();
+        });
+        timer.start();
         
     }
 
@@ -89,14 +102,41 @@ public class Campo extends SpriteContainer{
         int anchoCampo = getWidth(); 
         int anchoCigarrillo = 50;
 
-        int posXCigarrillo = rand.nextInt(anchoCampo - anchoCigarrillo);
-        
-        Veneno v1 = new Veneno(posXCigarrillo, 0, 50, 50);
-    
-        venenos.add(v1);
-    
-        new Thread(v1).start();
+        for (int i = 0; i < 2; i++) {  // Bucle para agregar 2 venenos
+           int posX = rand.nextInt(anchoCampo - anchoCigarrillo);
+            Veneno v = new Veneno(posX, 0, 50, 50);
+            venenos.add(v);
+            new Thread(v).start();
+        }
     }
+    
+//    public void actualizarComidas() {
+//        synchronized (comidas) {
+//            Iterator<Comida> it = comidas.iterator();
+//            while (it.hasNext()) {
+//                Comida c = it.next();
+//                c.caer();
+//
+//                if (c.yaSalioDelCampo()) {
+//                    it.remove();
+//                }
+//            }
+//        }
+//    }
+//
+//    public void actualizarVenenos() {
+//        synchronized (venenos) {
+//            Iterator<Veneno> it = venenos.iterator();
+//            while (it.hasNext()) {
+//                Veneno v = it.next();
+//                v.caer(); // Haces caer cada veneno
+//
+//                if (v.yaSalioDelCampo()) {  
+//                    it.remove();
+//                }
+//            }
+//        }
+//    }
 
     private int getWidth() {
         return 800; 
