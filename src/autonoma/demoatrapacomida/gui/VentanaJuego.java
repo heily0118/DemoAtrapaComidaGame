@@ -170,12 +170,12 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
 
     @Override
     public void refresh(Graphics g) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        this.repaint();
     }
 
     @Override
     public Rectangle getBoundaries() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.getBounds();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

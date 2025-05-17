@@ -65,7 +65,7 @@ public abstract class Comida extends SpriteMobile {
      * @return Retorna true si la posición en Y es menor a 900 (dentro de los límites) y false si ya salió.
      */
     public boolean estaCayendo() {
-        return y < 900;
+        return y < 800;
     }
 
     /**
