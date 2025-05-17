@@ -49,6 +49,8 @@ public class VideoJuego {
            code == KeyEvent.VK_LEFT |
            code == KeyEvent.VK_RIGHT)
         {
+            
+            System.out.println("envento teclado video juego");
         campo.manejarEventoTeclado(code);
         
         }
