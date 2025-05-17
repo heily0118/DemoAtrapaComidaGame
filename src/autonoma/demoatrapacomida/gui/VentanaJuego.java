@@ -16,7 +16,9 @@ import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.nio.Buffer;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -38,6 +40,7 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
     
     private VideoJuego juego;
     private Image fondoCampo;
+    private BufferedImage buffer; 
     
     public VentanaJuego(java.awt.Frame parent, boolean modal,VideoJuego juego) {
 
@@ -171,33 +174,37 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
 
     @Override
     public void paint(Graphics g) {
-        super.paint(g);
-        dibujar(g); 
-        juego.dibujarElementos(g); 
-       
-
-        g.setColor(Color.BLACK);
-        g.setFont(new Font("Arial", Font.BOLD, 24));
-        g.drawString("PUNTAJE", 25, 80);
-        g.drawString(String.valueOf(juego.getCampo().getJugador().getPuntaje().getPuntajeActual()), 150, 80);
-
-        juego.getCampo().getJugador().paint(g);
-
-
-    }
-
-    public void dibujar(Graphics g) {
-
-        if (fondoCampo != null) {
-            g.drawImage(fondoCampo, 0, 0, getWidth(), getHeight(), this);
-        } else {
-            // Si no se carga la imagen, dibuja fondo verde como fallback
-            g.setColor(new Color(34, 139, 34));
-            g.fillRect(0, 0, 800, 800);
+        if (buffer == null || buffer.getWidth() != getWidth() || buffer.getHeight() != getHeight()) {
+            buffer = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_ARGB);
         }
 
-    }
+        Graphics gBuffer = buffer.getGraphics();
 
+        // Dibuja el fondo
+        if (fondoCampo != null) {
+            gBuffer.drawImage(fondoCampo, 0, 0, getWidth(), getHeight(), this);
+        } else {
+            gBuffer.setColor(new Color(34, 139, 34)); 
+            gBuffer.fillRect(0, 0, getWidth(), getHeight());
+        }
+
+        // Dibuja los elementos
+        juego.dibujarElementos(gBuffer);
+
+        // Dibuja el puntaje
+        gBuffer.setColor(Color.BLACK);
+        gBuffer.setFont(new Font("Arial", Font.BOLD, 24));
+        gBuffer.drawString("PUNTAJE", 25, 80);
+        gBuffer.drawString(String.valueOf(juego.getCampo().getJugador().getPuntaje().getPuntajeActual()), 150, 80);
+
+        // Dibujar jugador
+        juego.getCampo().getJugador().paint(gBuffer);
+
+        g.drawImage(buffer, 0, 0, this);
+    
+        gBuffer.dispose();
+    }
+    
     @Override
     public void refresh(Graphics g) {
         
