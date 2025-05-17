@@ -49,7 +49,7 @@ public class VentanaInformacion extends javax.swing.JDialog {
             fondo.add(labelNombre);
 
             // Mostrar puntaje
-            labelPuntaje = new JLabel("Puntaje: " + juego.getCampo().getJugador().getPuntaje());
+            labelPuntaje = new JLabel("Puntaje: " + juego.getCampo().getJugador().getPuntaje().getPuntajeActual());
             labelPuntaje.setBounds(50, 70, 300, 30);
             labelPuntaje.setFont(new Font("Arial", Font.BOLD, 20));
             labelPuntaje.setForeground(Color.WHITE);
