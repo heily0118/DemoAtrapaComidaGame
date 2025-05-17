@@ -61,6 +61,23 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
             
         }
 
+       
+        // Timer para hacer caer las comidas y repintar
+        javax.swing.Timer timer = new javax.swing.Timer(30, e -> {
+            for (Comida c : juego.getCampo().getComidas()) {
+                c.caer();  
+            }
+            repaint();
+        });
+        timer.start();
+
+        // Timer para agregar nuevas comidas periódicamente
+        javax.swing.Timer generadorComida = new javax.swing.Timer(3000, e -> {
+            juego.generarComida();
+        });
+        generadorComida.start();
+    
+
 
         
     }
@@ -122,7 +139,7 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
        
     }
       
-    
+
     
     }//GEN-LAST:event_formMouseClicked
 
@@ -161,7 +178,13 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
         g.setFont(new Font("Arial", Font.BOLD, 24));
         g.drawString("PUNTAJE", 25, 80);
         g.drawString(String.valueOf(juego.getCampo().getJugador().getPuntaje().getPuntajeActual()), 150, 80);
+<<<<<<< HEAD
         
+=======
+
+        juego.getCampo().getJugador().paint(g);
+
+>>>>>>> 38d1e92d782208d90a9d46839f98d30ca969adf0
     }
 
     public void dibujar(Graphics g) {
