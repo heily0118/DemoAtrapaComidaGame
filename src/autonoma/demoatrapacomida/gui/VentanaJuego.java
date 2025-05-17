@@ -42,7 +42,7 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
     private VideoJuego juego;
     private Image fondoCampo;
     private BufferedImage buffer; 
-    
+
     public VentanaJuego(java.awt.Frame parent, boolean modal,VideoJuego juego) {
 
         initComponents();
@@ -187,8 +187,37 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
 
     @Override
     public void paint(Graphics g) {
+
+        super.paint(g);
+        dibujar(g); 
+        juego.dibujarElementos(g); 
+       
+        g.setColor(Color.BLACK);
+        g.setFont(new Font("Arial", Font.BOLD, 24));
+        g.drawString("PUNTAJE", 25, 80);
+        g.drawString(String.valueOf(juego.getCampo().getJugador().getPuntaje().getPuntajeActual()), 150, 80);
+
+       juego.getCampo().getJugador().paint(g);
+
+
+
+
+        juego.getCampo().getJugador().paint(g);
+
+    }
+
+    public void dibujar(Graphics g) {
+
+        if (fondoCampo != null) {
+            g.drawImage(fondoCampo, 0, 0, getWidth(), getHeight(), this);
+        } else {
+            // Si no se carga la imagen, dibuja fondo verde como fallback
+            g.setColor(new Color(34, 139, 34));
+            g.fillRect(0, 0, 800, 800);
+
         if (buffer == null || buffer.getWidth() != getWidth() || buffer.getHeight() != getHeight()) {
             buffer = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_ARGB);
+
         }
 
         Graphics gBuffer = buffer.getGraphics();
@@ -217,6 +246,7 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
         g.drawImage(buffer, 0, 0, this);
     
         gBuffer.dispose();
+    }
     }
     
     public void dibujarElementos(Graphics g) {
