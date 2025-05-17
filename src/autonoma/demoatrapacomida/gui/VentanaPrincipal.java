@@ -5,6 +5,8 @@
 package autonoma.demoatrapacomida.gui;
 
 import autonoma.demoatrapacomida.elements.VideoJuego;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import javax.swing.ImageIcon;
@@ -41,9 +43,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         };
         panelFondo.setLayout(null);
-
         JButton botonJugar = new JButton("Jugar");
         botonJugar.setBounds(340, 600, 120, 40);
+        estiloBoton(botonJugar);  // <- Aplicar estilo
         botonJugar.addActionListener(e -> {
             pedirNombreJugador();
             new VentanaInformacion(this, true, juego).setVisible(true);
@@ -91,6 +93,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
     
 
+    private void estiloBoton(JButton boton) {
+        boton.setForeground(Color.WHITE); 
+        boton.setFont(new Font("Arial", Font.BOLD, 16));
+        boton.setOpaque(false);           
+        boton.setContentAreaFilled(false); 
+        boton.setBorderPainted(true);     
+        boton.setFocusPainted(false);     
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
