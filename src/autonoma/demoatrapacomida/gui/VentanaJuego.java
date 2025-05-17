@@ -16,7 +16,9 @@ import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.nio.Buffer;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,9 +39,19 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
      */
     
     private VideoJuego juego;
+<<<<<<< HEAD
     private Image buffer;
     private Image fondoCampo;
 
+=======
+
+
+
+    private Image fondoCampo;
+    private BufferedImage buffer; 
+
+    
+>>>>>>> fa02a24cbf518df98055f378c2101176eb16e8ce
     public VentanaJuego(java.awt.Frame parent, boolean modal,VideoJuego juego) {
 
         initComponents();
@@ -172,6 +184,7 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
 
     @Override
     public void paint(Graphics g) {
+
         super.paint(g);
         dibujar(g); 
         juego.dibujarElementos(g); 
@@ -180,9 +193,18 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
         g.setFont(new Font("Arial", Font.BOLD, 24));
         g.drawString("PUNTAJE", 25, 80);
         g.drawString(String.valueOf(juego.getCampo().getJugador().getPuntaje().getPuntajeActual()), 150, 80);
+<<<<<<< HEAD
         
        juego.getCampo().getJugador().paint(g);
 
+=======
+
+
+
+        juego.getCampo().getJugador().paint(g);
+
+
+>>>>>>> fa02a24cbf518df98055f378c2101176eb16e8ce
     }
 
     public void dibujar(Graphics g) {
@@ -193,13 +215,45 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
             // Si no se carga la imagen, dibuja fondo verde como fallback
             g.setColor(new Color(34, 139, 34));
             g.fillRect(0, 0, 800, 800);
+
+        if (buffer == null || buffer.getWidth() != getWidth() || buffer.getHeight() != getHeight()) {
+            buffer = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_ARGB);
+
         }
 
-    }
+        Graphics gBuffer = buffer.getGraphics();
 
+        // Dibuja el fondo
+        if (fondoCampo != null) {
+            gBuffer.drawImage(fondoCampo, 0, 0, getWidth(), getHeight(), this);
+        } else {
+            gBuffer.setColor(new Color(34, 139, 34)); 
+            gBuffer.fillRect(0, 0, getWidth(), getHeight());
+        }
+
+        // Dibuja los elementos
+        juego.dibujarElementos(gBuffer);
+
+        // Dibuja el puntaje
+        
+        gBuffer.setColor(Color.BLACK);
+        gBuffer.setFont(new Font("Arial", Font.BOLD, 24));
+        gBuffer.drawString("PUNTAJE", 25, 80);
+        gBuffer.drawString(String.valueOf(juego.getCampo().getJugador().getPuntaje().getPuntajeActual()), 150, 80);
+
+        // Dibujar jugador
+        juego.getCampo().getJugador().paint(gBuffer);
+
+        g.drawImage(buffer, 0, 0, this);
+    
+        gBuffer.dispose();
+    }
+    }
+    
     @Override
     public void refresh(Graphics g) {
         
+        juego.dibujarElementos(g); 
         this.repaint();
 
     }
@@ -209,9 +263,6 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
         return this.getBounds();
     }
 
-
-    
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }
