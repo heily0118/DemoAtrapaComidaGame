@@ -75,24 +75,17 @@ public class Jugador extends SpriteMobile{
          if (comidas == null || comidas.isEmpty()) {
             System.out.println("No hay comida.");
             return;
-        }        
-       
-        //se hace un ciclo de las comidas par ver si el jugador esta encima de una  
-        for (Comida comida : comidas) {
-            
-            ///se verifica si esa comida esta ensima del jugador
+        }
+
+        for (int i = 0; i < comidas.size(); i++) {
+            Comida comida = comidas.get(i);
+
             if (checkCollision(comida)) {
-                
-                //se elemina esa comida en especifico
-                comidas.remove(comida);
-                
                 puntaje.aumentarPuntaje(comida.getValor());
-                
+                comidas.remove(i);
+                i--; 
             }
         }
-        
-        
-
     }   
     public void atraparVeneno(ArrayList<Veneno> venenos){
     
