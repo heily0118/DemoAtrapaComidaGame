@@ -23,6 +23,11 @@ class Veneno extends SpriteMobile {
     private String tipo;
     
     /**
+     * Cantidad de puntos del veneno.
+     */
+    private int valor = 2;
+    
+    /**
      * Imagen que representa visualmente la veneno en el juego.
      */
     protected Image venenoImagen;
@@ -102,17 +107,44 @@ class Veneno extends SpriteMobile {
         this.venenoImagen = venenoImagen;
     }    
 
-    int getValor() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    /**
+     * Obtiene el valor en puntos que representa atrapar este objeto en el juego.
+     * 
+     * @return Retorna -2, indicando que el veneno resta puntos si se atrapa.
+     */
+    public int getValor() {
+        return -2;
     }
 
+    /**
+     * Mueve el objeto veneno hacia abajo en la pantalla.
+     * 
+     * @return Retorna true siempre, ya que se mueve cada vez que se llama.
+     */
     @Override
     public boolean mover() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        y += 10;  
+        return true;
     }
 
+    /**
+     * Ejecuta el comportamiento en hilo del objeto veneno.
+     */
     @Override
     public void run() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        running = true;
+    
+        while (running) {
+            try {
+                if (!pausa) {
+                    caer(); 
+                }
+            
+                Thread.sleep(delay);
+            } catch (InterruptedException e) {
+                System.out.println("Hilo del veneno interrumpido: " + e.getMessage());
+                running = false;
+            }
+        }
     }
 }
