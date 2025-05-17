@@ -12,8 +12,10 @@ import autonoma.demoatrapacomida.elements.VideoJuego;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Rectangle;
+import java.awt.RenderingHints;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
@@ -156,10 +158,9 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         
-    // Verifica si el botón izquierdo del mouse fue presionado
+   
     if (evt.getButton() == MouseEvent.BUTTON1) {
-        // Aquí va el código que deseas ejecutar al hacer clic izquierdo
-        System.out.println("Clic izquierdo detectado!");
+      
         
        juego.getCampo().getJugador().atraparComida(juego.getCampo().getComidas());
        juego.getCampo().getJugador().atraparVeneno(juego.getCampo().getVenenos());
@@ -202,7 +203,11 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
             buffer = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_ARGB);
         }
 
-        Graphics gBuffer = buffer.createGraphics();
+        Graphics2D gBuffer = buffer.createGraphics();
+
+        // Habilitar antialiasing para texto más suave
+        gBuffer.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        gBuffer.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 
         // Dibujo del campo
         if (fondoCampo != null) {
@@ -215,20 +220,32 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
         // Dibujo del juego
         juego.dibujarElementos(gBuffer);
 
-        // Texto del puntaje
-        gBuffer.setColor(Color.BLACK);
-        gBuffer.setFont(new Font("Arial", Font.BOLD, 24));
-        gBuffer.drawString("PUNTAJE", 25, 80);
-        gBuffer.drawString(String.valueOf(juego.getCampo().getJugador().getPuntaje().getPuntajeActual()), 150, 80);
+        // Texto del puntaje con sombra y color neón
+        String textoTitulo = "PUNTAJE";
+        String textoPuntaje = String.valueOf(juego.getCampo().getJugador().getPuntaje().getPuntajeActual());
 
-        // Dibujo del jugador
-        juego.getCampo().getJugador().paint(gBuffer);
-        
+        Font fuente = new Font("Arial Black", Font.BOLD, 28);
+        gBuffer.setFont(fuente);
+
+        // Sombra negra semitransparente
+        gBuffer.setColor(new Color(0, 0, 0, 150));
+        gBuffer.drawString(textoTitulo, 26, 81);
+        gBuffer.drawString(textoPuntaje, 151, 81);
+
+        // Texto principal en amarillo neón
+        gBuffer.setColor(new Color(255, 255, 100));
+        gBuffer.drawString(textoTitulo, 25, 80);
+        gBuffer.drawString(textoPuntaje, 210, 80);
+
+        // Dibujo del jugador (aunque ya lo dibuja juego.dibujarElementos, puedes omitir si se repite)
+        // juego.getCampo().getJugador().paint(gBuffer); 
+
         if (juego.getCampo().getJugador().getPuntaje().getPuntajeActual() < 0) {
             juegoTerminado = true;
             mostrarGameOver(gBuffer);
         }
 
+        // Pintar el buffer en pantalla
         g.drawImage(buffer, 0, 0, this);
 
         gBuffer.dispose();
