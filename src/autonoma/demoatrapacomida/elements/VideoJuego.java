@@ -40,6 +40,7 @@ public class VideoJuego {
 
     public void iniciarJuego() {
          generarComida();
+         generarVeneno();
        
     }
 

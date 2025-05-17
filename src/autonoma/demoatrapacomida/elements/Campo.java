@@ -109,34 +109,6 @@ public class Campo extends SpriteContainer{
             new Thread(v).start();
         }
     }
-    
-//    public void actualizarComidas() {
-//        synchronized (comidas) {
-//            Iterator<Comida> it = comidas.iterator();
-//            while (it.hasNext()) {
-//                Comida c = it.next();
-//                c.caer();
-//
-//                if (c.yaSalioDelCampo()) {
-//                    it.remove();
-//                }
-//            }
-//        }
-//    }
-//
-//    public void actualizarVenenos() {
-//        synchronized (venenos) {
-//            Iterator<Veneno> it = venenos.iterator();
-//            while (it.hasNext()) {
-//                Veneno v = it.next();
-//                v.caer(); // Haces caer cada veneno
-//
-//                if (v.yaSalioDelCampo()) {  
-//                    it.remove();
-//                }
-//            }
-//        }
-//    }
 
     private int getWidth() {
         return 800; 

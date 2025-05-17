@@ -8,7 +8,6 @@ import autonoma.demoatrapacomida.elements.Comida;
 import autonoma.demoatrapacomida.elements.GraphicContainer;
 import autonoma.demoatrapacomida.elements.Jugador;
 import autonoma.demoatrapacomida.elements.Veneno;
-
 import autonoma.demoatrapacomida.elements.VideoJuego;
 import java.awt.Color;
 import java.awt.Font;
@@ -25,6 +24,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -42,7 +42,9 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
     private VideoJuego juego;
     private Image fondoCampo;
     private BufferedImage buffer; 
-
+    private boolean juegoTerminado = false;
+    private boolean timerGameOverStarted;
+    
     public VentanaJuego(java.awt.Frame parent, boolean modal,VideoJuego juego) {
 
         initComponents();
@@ -52,6 +54,7 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
         setLocationRelativeTo(null);
         setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         this.setSize(800,800);
          setResizable(false);
@@ -98,6 +101,19 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
         });
         generadorVeneno.start();
     
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent e) {
+                int confirm = JOptionPane.showConfirmDialog(null,
+                "¿Estás seguro de que deseas salir del juego?",
+                "Confirmar salida",
+                JOptionPane.YES_NO_OPTION
+            );
+                if (confirm == JOptionPane.YES_OPTION) {
+                    System.exit(0);
+                }  
+            }
+        });
 
 
         
@@ -207,12 +223,42 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
 
         // Dibujo del jugador
         juego.getCampo().getJugador().paint(gBuffer);
+        
+        if (juego.getCampo().getJugador().getPuntaje().getPuntajeActual() < 0) {
+            juegoTerminado = true;
+            mostrarGameOver(gBuffer);
+        }
 
         g.drawImage(buffer, 0, 0, this);
 
         gBuffer.dispose();
 
     }
+    
+    private void mostrarGameOver(Graphics gBuffer) {
+        // Fondo semitransparente
+        gBuffer.setColor(new Color(0, 0, 0, 180));
+        gBuffer.fillRect(0, 0, getWidth(), getHeight());
+
+        // Texto Game Over
+        gBuffer.setColor(Color.RED);
+        gBuffer.setFont(new Font("Arial", Font.BOLD, 60));
+        String msg = "GAME OVER";
+        int msgWidth = gBuffer.getFontMetrics().stringWidth(msg);
+        int msgHeight = gBuffer.getFontMetrics().getHeight();
+        gBuffer.drawString(msg, (getWidth() - msgWidth) / 2, (getHeight() + msgHeight) / 2);
+
+        if (!timerGameOverStarted) {
+            timerGameOverStarted = true;
+            new javax.swing.Timer(500, e -> {
+                VentanaInformacion info = new VentanaInformacion(this, true, juego);
+                info.setVisible(true);
+                dispose(); 
+                
+            ((javax.swing.Timer)e.getSource()).stop(); 
+        }).start();
+    }
+}
     
     public void dibujarElementos(Graphics g) {
         for (Comida c : juego.getCampo().getComidas()) {

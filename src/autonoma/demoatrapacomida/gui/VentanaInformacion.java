@@ -30,6 +30,7 @@ public class VentanaInformacion extends javax.swing.JDialog {
             setSize(800, 800);
             setLocationRelativeTo(null);
             setResizable(false);
+            setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
             setLayout(null); 
 
@@ -70,10 +71,25 @@ public class VentanaInformacion extends javax.swing.JDialog {
             btnReiniciar.addActionListener(e -> {
                 
                 JOptionPane.showMessageDialog(this, "El juego ha sido reiniciado.");
+                System.exit(0);
                 dispose();
             });
             fondo.add(btnReiniciar);
-        }
+            
+            addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent e) {
+                int confirm = JOptionPane.showConfirmDialog(null,
+                "¿Estás seguro de que deseas salir del juego?",
+                "Confirmar salida",
+                JOptionPane.YES_NO_OPTION
+            );
+                if (confirm == JOptionPane.YES_OPTION) {
+                    System.exit(0);
+                }  
+            }
+        });
+    }
     
 
     /**

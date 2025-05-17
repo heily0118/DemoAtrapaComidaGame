@@ -148,13 +148,4 @@ public class Veneno extends SpriteMobile{
         }
     }
 
-//    /**
-//     * Verifica si el objeto ha salido del área visible del campo de juego.
-//     *
-//     * @return  Retorna true si la posición vertical del objeto es mayor que 800,
-//     *         indicando que ha salido del campo hacia abajo y false en caso contrario.
-//     */
-//    public boolean yaSalioDelCampo() {
-//        return this.getY() > 800;
-//    }
 }
