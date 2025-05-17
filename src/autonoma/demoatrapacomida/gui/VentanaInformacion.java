@@ -26,13 +26,14 @@ public class VentanaInformacion extends javax.swing.JDialog {
             super(parent, modal);
             this.juego = juego;
             initComponents();
-            setTitle("Información del Jugador");
+            setTitle("Atrapa Comida");
             setSize(800, 800);
             setLocationRelativeTo(null);
             setResizable(false);
 
             setLayout(null); 
 
+            this.setIconImage(new ImageIcon(getClass().getResource("/autonoma/demoatrapacomida/images/Logo.jpeg")).getImage());
             // Fondo
             JLabel fondo = new JLabel(new ImageIcon(getClass().getResource("/autonoma/demoatrapacomida/images/FondoInformacion.jpeg")));
             fondo.setBounds(0, 0, 800, 800);
