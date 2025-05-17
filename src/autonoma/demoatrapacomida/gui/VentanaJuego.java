@@ -50,6 +50,7 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
         this.setSize(800,800);
          setResizable(false);
         this.setLocationRelativeTo(null);
+        this.juego.generarComida();
         
         
         try{ 
@@ -151,14 +152,15 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
 
     @Override
     public void paint(Graphics g) {
-        super.paint(g); // Llama al método de la clase padre para asegurar que se dibuje el fondo
-        dibujar(g); // Llama a tu método dibujar
-        
-        juego.getCampo().getJugador().paint(g);
+        super.paint(g);
+        dibujar(g); 
+        juego.dibujarElementos(g); 
+       
+
         g.setColor(Color.BLACK);
         g.setFont(new Font("Arial", Font.BOLD, 24));
         g.drawString("PUNTAJE", 25, 80);
-        g.drawString(String.valueOf(juego.getCampo().getJugador().getPuntaje().getPuntajeActual()), 150, 0);
+        g.drawString(String.valueOf(juego.getCampo().getJugador().getPuntaje().getPuntajeActual()), 150, 80);
     }
 
     public void dibujar(Graphics g) {

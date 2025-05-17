@@ -62,16 +62,14 @@ public class Campo extends SpriteContainer{
     }
     
     public void agregarComidas(){
-    HotDog hotdog = new HotDog(100, 0, 50, 50, "HotDog", null);
-    Hamburguesa hamburguesa = new Hamburguesa(200, 0, 50, 50, "Hamburguesa", null);
+       HotDog h = new HotDog(100, 0, 50, 50, "HotDog", null);
+       Hamburguesa b = new Hamburguesa(300, 0, 50, 50, "Hamburguesa", null);
 
-    
-    comidas.add(hotdog);
-    comidas.add(hamburguesa);
+       comidas.add(h);
+       comidas.add(b);
 
-  
-    new Thread(hotdog).start();
-    new Thread(hamburguesa).start();
+       new Thread(h).start();
+       new Thread(b).start();
         
     }
     

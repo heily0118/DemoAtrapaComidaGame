@@ -33,14 +33,21 @@ public class HotDog extends Comida {
 
     @Override
     public void run() {
-         while (true) {
-        caer();
-        try {
-            Thread.sleep(200); 
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        while (true) {
+            try {
+                // Mueve hacia abajo
+                this.setY(this.getY() + 5);
+                
+                // Verifica si salió de la pantalla
+                if (this.getY() > 800) {
+                    break; // Termina si ya cayó fuera
+                }
+
+                Thread.sleep(100); // Velocidad de caída
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
-    }
     }
 
     @Override
