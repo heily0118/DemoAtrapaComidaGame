@@ -192,6 +192,7 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
         juego.dibujarElementos(gBuffer);
 
         // Dibuja el puntaje
+        
         gBuffer.setColor(Color.BLACK);
         gBuffer.setFont(new Font("Arial", Font.BOLD, 24));
         gBuffer.drawString("PUNTAJE", 25, 80);
