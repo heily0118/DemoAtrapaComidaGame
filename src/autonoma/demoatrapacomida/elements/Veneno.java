@@ -121,7 +121,7 @@ class Veneno extends SpriteMobile {
      * 
      * @return Retorna true siempre, ya que se mueve cada vez que se llama.
      */
-    @Override
+    
     public boolean mover() {
         y += 10;  
         return true;

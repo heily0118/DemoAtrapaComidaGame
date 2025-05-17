@@ -49,13 +49,6 @@ public abstract class SpriteMobile extends Sprite implements Runnable {
     }
 
     /**
-     * Método abstracto que define el movimiento específico del Sprite.
-     *
-     * @return  Retorna true si el sprite se movió correctamente o retorna false en caso contrario.
-     */
-    public abstract boolean mover();
-
-    /**
      * Verifica si el hilo del Sprite está corriendo.
      *
      * @return Retorna true si está corriendo o retorna false si está detenido.

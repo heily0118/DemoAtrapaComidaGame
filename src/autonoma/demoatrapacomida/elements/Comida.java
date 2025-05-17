@@ -67,18 +67,8 @@ public abstract class Comida extends SpriteMobile {
     public boolean estaCayendo() {
         return y < 800;
     }
-
-    /**
-     * Hace que la comida caiga.
-     * 
-     */
-    public void caer() {
-        if (estaCayendo()) {
-            mover();
-        } else {
-            setVisible(false);  
-        }
-    }
+    public abstract void caer();
+   
 
     /**
      * Obtiene el nombre de la comida.
