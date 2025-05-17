@@ -6,6 +6,7 @@ package autonoma.demoatrapacomida.elements;
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.Random;
 import javax.swing.Timer;
 
   /**
@@ -65,22 +66,39 @@ public class Campo extends SpriteContainer{
     }
     
     public void agregarComidas(){
-       HotDog h = new HotDog(100, 0, 50, 50, "HotDog", null);
-       Hamburguesa b = new Hamburguesa(300, 0, 50, 50, "Hamburguesa", null);
+        Random rand = new Random();
+        int anchoCampo = getWidth(); 
+        int anchoComida = 50;
 
-       comidas.add(h);
-       comidas.add(b);
+        int posXHotDog = rand.nextInt(anchoCampo - anchoComida);
+        int posXHamburguesa = rand.nextInt(anchoCampo - anchoComida);
 
-       new Thread(h).start();
-       new Thread(b).start();
+        HotDog h = new HotDog(posXHotDog, 0, 50, 50, "HotDog", null);
+        Hamburguesa b = new Hamburguesa(posXHamburguesa, 0, 50, 50, "Hamburguesa", null);
+
+        comidas.add(h);
+        comidas.add(b);
+
+        new Thread(h).start();
+        new Thread(b).start();
         
     }
     
     public void agregarVeneno(){
-        Veneno v1 = new Veneno(150, 0, 50, 50);
+        Random rand = new Random();
+        int anchoCampo = getWidth(); 
+        int anchoCigarrillo = 50;
+
+        int posXCigarrillo = rand.nextInt(anchoCampo - anchoCigarrillo);
+        
+        Veneno v1 = new Veneno(posXCigarrillo, 0, 50, 50);
     
         venenos.add(v1);
     
         new Thread(v1).start();
+    }
+
+    private int getWidth() {
+        return 800; 
     }
 }

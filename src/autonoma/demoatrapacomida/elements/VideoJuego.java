@@ -19,6 +19,7 @@ import java.io.IOException;
 public class VideoJuego {
     
     private Campo campo;
+    
 
     public VideoJuego() {
         Jugador j = new Jugador(""); 
