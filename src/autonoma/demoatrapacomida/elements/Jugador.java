@@ -147,13 +147,18 @@ public class Jugador extends SpriteMobile{
     @Override
     public void paint(Graphics g){ 
             
+        System.out.println("");
+        System.out.println("posiscion actual en dibujal");
+        System.out.println("x :" +x+ "  y : "+y);
+        
         g.drawImage(jugadorImage, x, y, width, height, null);
     }
 
     @Override
     public void run() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
     }
+
 
   
 
