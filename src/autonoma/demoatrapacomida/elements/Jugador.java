@@ -88,28 +88,18 @@ public class Jugador extends SpriteMobile{
         }
     }   
     public void atraparVeneno(ArrayList<Veneno> venenos){
-    
-         if (venenos == null || venenos.isEmpty()) {
+        if (venenos == null || venenos.isEmpty()) {
             System.out.println("No hay venenos.");
             return;
-        } 
-        //se hace un ciclo de las comidas par ver si el jugador esta encima de una  
-        for (Veneno veneno : venenos) {
-            
-            ///se verifica si esa comida esta ensima del jugador
+        }
+
+        for (int i = venenos.size() - 1; i >= 0; i--) {
+            Veneno veneno = venenos.get(i);
             if (checkCollision(veneno)) {
-                
-                //se elemina esa comida en especifico
-                venenos.remove(veneno);
+                venenos.remove(i);
                 puntaje.dismuirPuntaje(veneno.getValor());
             }
         }
-        
-        
-        
-        
-        
-        
     }
         public void move(int direccion) {
             int nx = x;
