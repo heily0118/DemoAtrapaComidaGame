@@ -7,6 +7,7 @@ package autonoma.demoatrapacomida.gui;
 import autonoma.demoatrapacomida.elements.Comida;
 import autonoma.demoatrapacomida.elements.GraphicContainer;
 import autonoma.demoatrapacomida.elements.Jugador;
+import autonoma.demoatrapacomida.elements.Veneno;
 
 import autonoma.demoatrapacomida.elements.VideoJuego;
 import java.awt.Color;
@@ -66,21 +67,36 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
             
         }
 
+        // Inicializa el buffer fuera del paint para que no se cree cada vez
+        buffer = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_ARGB);
+
        
         // Timer para hacer caer las comidas y repintar
         javax.swing.Timer timer = new javax.swing.Timer(30, e -> {
             for (Comida c : juego.getCampo().getComidas()) {
                 c.caer();  
             }
+            
+            for (Veneno v : juego.getCampo().getVenenos()) {
+                v.caer();  
+            }
             repaint();
         });
         timer.start();
+        
+        
 
         // Timer para agregar nuevas comidas periódicamente
         javax.swing.Timer generadorComida = new javax.swing.Timer(3000, e -> {
             juego.generarComida();
         });
         generadorComida.start();
+    
+        // Timer para agregar nuevos venenos periódicamente
+        javax.swing.Timer generadorVeneno = new javax.swing.Timer(3000, e -> {
+            juego.generarVeneno();
+        });
+        generadorVeneno.start();
     
 
 
@@ -127,16 +143,8 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
     // Verifica si el botón izquierdo del mouse fue presionado
     if (evt.getButton() == MouseEvent.BUTTON1) {
         // Aquí va el código que deseas ejecutar al hacer clic izquierdo
-        System.out.println("¡Clic izquierdo detectado!");
+        System.out.println("Clic izquierdo detectado!");
         
-        /* al dar clik se va hacer lo siguente
-        primero se va ver si el jugador esta encima en uno de los objetos
-        y eso se hace en el metodo de atrapar comida 
-        
-        y ese metodo va recicibir la lista de comidas y venenos 
-        */
-        
-        //se crea un jugador de estudio
        juego.getCampo().getJugador().atraparComida(juego.getCampo().getComidas());
        juego.getCampo().getJugador().atraparVeneno(juego.getCampo().getVenenos());
                 
@@ -174,66 +182,46 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
 
     @Override
     public void paint(Graphics g) {
-
-        super.paint(g);
-        dibujar(g); 
-        juego.dibujarElementos(g); 
-       
-        g.setColor(Color.BLACK);
-        g.setFont(new Font("Arial", Font.BOLD, 24));
-        g.drawString("PUNTAJE", 25, 80);
-        g.drawString(String.valueOf(juego.getCampo().getJugador().getPuntaje().getPuntajeActual()), 150, 80);
-
-       juego.getCampo().getJugador().paint(g);
-
-
-
-
-        juego.getCampo().getJugador().paint(g);
-
-    }
-
-    public void dibujar(Graphics g) {
-
-        if (fondoCampo != null) {
-            g.drawImage(fondoCampo, 0, 0, getWidth(), getHeight(), this);
-        } else {
-            // Si no se carga la imagen, dibuja fondo verde como fallback
-            g.setColor(new Color(34, 139, 34));
-            g.fillRect(0, 0, 800, 800);
-
         if (buffer == null || buffer.getWidth() != getWidth() || buffer.getHeight() != getHeight()) {
             buffer = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_ARGB);
-
         }
 
-        Graphics gBuffer = buffer.getGraphics();
+        Graphics gBuffer = buffer.createGraphics();
 
-        // Dibuja el fondo
+        // Dibujo del campo
         if (fondoCampo != null) {
             gBuffer.drawImage(fondoCampo, 0, 0, getWidth(), getHeight(), this);
         } else {
-            gBuffer.setColor(new Color(34, 139, 34)); 
+            gBuffer.setColor(new Color(34, 139, 34)); // Verde pasto
             gBuffer.fillRect(0, 0, getWidth(), getHeight());
         }
 
-        // Dibuja los elementos
+        // Dibujo del juego
         juego.dibujarElementos(gBuffer);
 
-        // Dibuja el puntaje
-        
+        // Texto del puntaje
         gBuffer.setColor(Color.BLACK);
         gBuffer.setFont(new Font("Arial", Font.BOLD, 24));
         gBuffer.drawString("PUNTAJE", 25, 80);
         gBuffer.drawString(String.valueOf(juego.getCampo().getJugador().getPuntaje().getPuntajeActual()), 150, 80);
 
-        // Dibujar jugador
+        // Dibujo del jugador
         juego.getCampo().getJugador().paint(gBuffer);
 
         g.drawImage(buffer, 0, 0, this);
-    
+
         gBuffer.dispose();
+
     }
+    
+    public void dibujarElementos(Graphics g) {
+        for (Comida c : juego.getCampo().getComidas()) {
+            c.paint(g);
+        }
+        
+        for (Veneno v : juego.getCampo().getVenenos()) {
+            v.paint(g);
+        }
     }
     
     @Override

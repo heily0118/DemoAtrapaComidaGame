@@ -111,42 +111,44 @@ public class Jugador extends SpriteMobile{
         
         
     }
-    public void move(int direccion)
-    {
-        
-        int nx = x;
-        int ny = y;
-        
+        public void move(int direccion) {
+            int nx = x;
+            int ny = y;
 
-        switch(direccion )
-        {
-            case KeyEvent.VK_UP:
-                ny -= pasos;
-            break;
+            switch(direccion) {
+                case KeyEvent.VK_UP:
+                    ny -= pasos;
+                    break;
+                case KeyEvent.VK_DOWN:
+                    ny += pasos;
+                    break;
+                case KeyEvent.VK_LEFT:
+                    nx -= pasos;
+                    break;
+                case KeyEvent.VK_RIGHT:
+                    nx += pasos;
+                    break;
+            }
 
-            case KeyEvent.VK_DOWN:
-                ny += pasos;
-            break;
-
-            case KeyEvent.VK_LEFT:
-                nx -= pasos;
-            break;
-
-            case KeyEvent.VK_RIGHT:
-                nx += pasos;
-            break;
+            // Verifica si el movimiento es válido
+            if (limiteDeMapa(nx, ny)) {
+                // Si es válido, actualiza x e y
+                x = nx;
+                y = ny;            
+            }
         }
-        
-        
-        if(!this.isOutOfGraphicContainer(nx, ny, 800, 800))
-        {
-            System.out.println("no esta afuera");
-            x = nx;
-            y = ny;            
+
+        public boolean limiteDeMapa(int nx, int ny) {
+            // Verifica si nx y ny están dentro del rango permitido
+            if (nx < 0 || nx > 800 - 80 || ny < 0 || ny > 800 - 80) {
+                return false; // Movimiento no permitido
+            }
+
+            // Si el movimiento es válido, se asignan los valores a x e y
+            this.x = nx;
+            this.y = ny;
+            return true; // Movimiento permitido
         }
-        
-      
-    }
 
     @Override
     public void paint(Graphics g){ 
