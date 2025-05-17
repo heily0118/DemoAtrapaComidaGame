@@ -35,7 +35,7 @@ public class Jugador extends SpriteMobile{
     ////
     ///
     public Jugador( String nombre) {
-        super(0, 0, 80, 80);
+        super(400, 400, 80, 80);
         this.puntaje = new Puntaje();
         this.nombre = nombre;
         jugadorImage = new ImageIcon(getClass().getResource("/autonoma/DemoAtrapaComida/images/Jugador.jpeg")).getImage();
