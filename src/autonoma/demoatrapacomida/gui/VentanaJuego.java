@@ -39,8 +39,6 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
      */
     
     private VideoJuego juego;
-    private Image buffer;
-    private Image fondoCampo;
     private Image fondoCampo;
     private BufferedImage buffer; 
 
