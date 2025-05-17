@@ -39,19 +39,11 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
      */
     
     private VideoJuego juego;
-<<<<<<< HEAD
     private Image buffer;
     private Image fondoCampo;
-
-=======
-
-
-
     private Image fondoCampo;
     private BufferedImage buffer; 
 
-    
->>>>>>> fa02a24cbf518df98055f378c2101176eb16e8ce
     public VentanaJuego(java.awt.Frame parent, boolean modal,VideoJuego juego) {
 
         initComponents();
@@ -193,18 +185,14 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
         g.setFont(new Font("Arial", Font.BOLD, 24));
         g.drawString("PUNTAJE", 25, 80);
         g.drawString(String.valueOf(juego.getCampo().getJugador().getPuntaje().getPuntajeActual()), 150, 80);
-<<<<<<< HEAD
-        
+
        juego.getCampo().getJugador().paint(g);
 
-=======
 
 
 
         juego.getCampo().getJugador().paint(g);
 
-
->>>>>>> fa02a24cbf518df98055f378c2101176eb16e8ce
     }
 
     public void dibujar(Graphics g) {
