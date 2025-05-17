@@ -152,6 +152,12 @@ public class Jugador extends SpriteMobile{
     public void run() {
 
     }
+    
+    public void reiniciarPuntaje(){
+        puntaje.actualizarPuntaje();
+    }
+    
+    
 
 
 }

@@ -58,7 +58,10 @@ public class Puntaje {
         this.puntajeActual += valor;
     
     }
+    public void actualizarPuntaje(){
+            this.puntajeActual = 0;
 
+    }
     
     
 }

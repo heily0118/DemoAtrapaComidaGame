@@ -84,4 +84,12 @@ public class VideoJuego {
            
     }
     
+    public void reinicarJuego(){
+       campo.comidas.clear(); 
+        campo.venenos.clear(); 
+        campo.jugador.getPuntaje().actualizarPuntaje(); 
+       
+        
+    }
+    
 }

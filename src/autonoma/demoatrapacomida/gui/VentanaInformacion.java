@@ -66,16 +66,15 @@ public class VentanaInformacion extends javax.swing.JDialog {
             fondo.add(btnIniciar);
 
             // Botón Reiniciar Juego
-            JButton btnReiniciar = new JButton("Reiniciar Juego");
-            btnReiniciar.setBounds(200, 270, 180, 35);
-            btnReiniciar.addActionListener(e -> {
+             JButton btnReiniciar = new JButton("Reiniciar Juego");
+             btnReiniciar.setBounds(200, 270, 180, 35);
+             btnReiniciar.addActionListener(e -> {
+                    juego.reinicarJuego();
+                    labelPuntaje.setText("Puntaje: " + juego.getCampo().getJugador().getPuntaje().getPuntajeActual());
+                    JOptionPane.showMessageDialog(this, "El juego ha sido reiniciado.");
+                });
+                fondo.add(btnReiniciar);
                 
-                JOptionPane.showMessageDialog(this, "El juego ha sido reiniciado.");
-                System.exit(0);
-                dispose();
-            });
-            fondo.add(btnReiniciar);
-            
             addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent e) {

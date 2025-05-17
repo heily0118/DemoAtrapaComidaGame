@@ -158,4 +158,9 @@ public class Campo extends SpriteContainer{
         }
         return false;
     }
+    
+    
+    public void reiniciarCampo(){
+       jugador.reiniciarPuntaje();
+    }
 }
