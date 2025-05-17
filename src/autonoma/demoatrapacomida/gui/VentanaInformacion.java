@@ -50,7 +50,8 @@ public class VentanaInformacion extends javax.swing.JDialog {
         javax.swing.JButton btnReiniciar = new javax.swing.JButton("Reiniciar juego");
         btnReiniciar.setBounds(300, 650, 200, 40);
         btnReiniciar.addActionListener(e -> {
-         
+         new VentanaJuego((java.awt.Frame) getParent(), true, juego).setVisible(true);
+            dispose();
           
         });
 
