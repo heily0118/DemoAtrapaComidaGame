@@ -15,7 +15,7 @@ import javax.swing.ImageIcon;
  * @version 1.0.0
  * 
  */
-class Veneno extends SpriteMobile {
+public class Veneno extends SpriteMobile {
     
     /**
      * Tipo o nombre del veneno.
@@ -34,7 +34,8 @@ class Veneno extends SpriteMobile {
 
     public Veneno(int x, int y, int height, int width) {
         super(x, y, height, width);
-        this.venenoImagen = new ImageIcon("/autonoma/demoatrapacomida/images/Cigarillo.png").getImage();
+        this.venenoImagen = new ImageIcon(getClass().getResource("/autonoma/demoatrapacomida/images/Cigarrillo.png")).getImage();
+        this.pausa = false;
     }
     
     
@@ -48,7 +49,7 @@ class Veneno extends SpriteMobile {
     }
 
     /**
-     * Hace que la comida caiga.
+     * Hace que el veneno caiga.
      * 
      */
     public void caer() {
@@ -58,6 +59,7 @@ class Veneno extends SpriteMobile {
             setVisible(false);  
         }
     }
+    
     
     /**
      * Dibuja la imagen del veneno en las coordenadas actuales.
@@ -121,9 +123,8 @@ class Veneno extends SpriteMobile {
      * 
      * @return Retorna true siempre, ya que se mueve cada vez que se llama.
      */
-    
     public boolean mover() {
-        y += 10;  
+        this.y += 10;  
         return true;
     }
 

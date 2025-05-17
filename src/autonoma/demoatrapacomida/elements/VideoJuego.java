@@ -59,6 +59,10 @@ public class VideoJuego {
         campo.agregarComidas();
     }
     
+    public void generarVeneno(){
+        campo.agregarVeneno();
+    }
+    
       /**
      * Dibuja todos los elementos del campo en pantalla.
      * 

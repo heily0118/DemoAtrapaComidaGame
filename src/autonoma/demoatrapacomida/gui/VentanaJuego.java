@@ -7,6 +7,7 @@ package autonoma.demoatrapacomida.gui;
 import autonoma.demoatrapacomida.elements.Comida;
 import autonoma.demoatrapacomida.elements.GraphicContainer;
 import autonoma.demoatrapacomida.elements.Jugador;
+import autonoma.demoatrapacomida.elements.Veneno;
 
 import autonoma.demoatrapacomida.elements.VideoJuego;
 import java.awt.Color;
@@ -72,15 +73,27 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
             for (Comida c : juego.getCampo().getComidas()) {
                 c.caer();  
             }
+            
+            for (Veneno v : juego.getCampo().getVenenos()) {
+                v.caer();  
+            }
             repaint();
         });
         timer.start();
+        
+        
 
         // Timer para agregar nuevas comidas periódicamente
         javax.swing.Timer generadorComida = new javax.swing.Timer(3000, e -> {
             juego.generarComida();
         });
         generadorComida.start();
+    
+        // Timer para agregar nuevos venenos periódicamente
+        javax.swing.Timer generadorVeneno = new javax.swing.Timer(3000, e -> {
+            juego.generarVeneno();
+        });
+        generadorVeneno.start();
     
 
 
@@ -204,6 +217,16 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
         g.drawImage(buffer, 0, 0, this);
     
         gBuffer.dispose();
+    }
+    
+    public void dibujarElementos(Graphics g) {
+        for (Comida c : juego.getCampo().getComidas()) {
+            c.paint(g);
+        }
+        
+        for (Veneno v : juego.getCampo().getVenenos()) {
+            v.paint(g);
+        }
     }
     
     @Override

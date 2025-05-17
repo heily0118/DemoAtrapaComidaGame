@@ -77,6 +77,10 @@ public class Campo extends SpriteContainer{
     }
     
     public void agregarVeneno(){
-        
+        Veneno v1 = new Veneno(150, 0, 50, 50);
+    
+        venenos.add(v1);
+    
+        new Thread(v1).start();
     }
 }
