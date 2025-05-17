@@ -6,6 +6,7 @@ package autonoma.demoatrapacomida.elements;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import javax.swing.ImageIcon;
 
 /**
  * 
@@ -18,23 +19,33 @@ public class HotDog extends Comida {
 
     public HotDog(int x, int y, int height, int width, String nombre, Image comidaImage) {
         super(x, y, height, width, nombre, comidaImage);
+        this.comidaImage = new ImageIcon(getClass().getResource("/autonoma/demoatrapacomida/images/PerroCaliente.png")).getImage();
     }
 
    
 
     @Override
     public void paint(Graphics g) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        g.drawImage(this.comidaImage, this.x, this.y, this.width, this.height, null);
     }
 
-    @Override
-    public boolean mover() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+  
 
     @Override
     public void run() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+         while (true) {
+        caer();
+        try {
+            Thread.sleep(200); 
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+    }
+
+    @Override
+    public void caer() {
+        this.y += 5;
     }
     
   

@@ -28,6 +28,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        
+        this.setIconImage(new ImageIcon(getClass().getResource("/autonoma/demoatrapacomida/images/Logo.jpeg")).getImage());
 
         ImageIcon fondo = new ImageIcon(getClass().getResource("/autonoma/demoatrapacomida/images/Portada.jpeg"));
 
@@ -43,7 +45,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         JButton botonJugar = new JButton("Jugar");
         botonJugar.setBounds(340, 600, 120, 40);
         botonJugar.addActionListener(e -> {
-            new VentanaJuego(this, true, juego).setVisible(true);
+            new VentanaInformacion(this, true, juego).setVisible(true);
             dispose();
         });
 

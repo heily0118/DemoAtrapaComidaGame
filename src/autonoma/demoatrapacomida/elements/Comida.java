@@ -65,20 +65,10 @@ public abstract class Comida extends SpriteMobile {
      * @return Retorna true si la posición en Y es menor a 900 (dentro de los límites) y false si ya salió.
      */
     public boolean estaCayendo() {
-        return y < 900;
+        return y < 800;
     }
-
-    /**
-     * Hace que la comida caiga.
-     * 
-     */
-    public void caer() {
-        if (estaCayendo()) {
-            mover();
-        } else {
-            setVisible(false);  
-        }
-    }
+    public abstract void caer();
+   
 
     /**
      * Obtiene el nombre de la comida.
