@@ -153,8 +153,4 @@ public class Jugador extends SpriteMobile{
     }
 
 
-  
-
-   
-
 }
