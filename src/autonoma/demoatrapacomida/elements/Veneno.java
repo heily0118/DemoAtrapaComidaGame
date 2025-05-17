@@ -15,7 +15,7 @@ import javax.swing.ImageIcon;
  * @version 1.0.0
  * 
  */
-public class Veneno extends SpriteMobile {
+public class Veneno extends SpriteMobile{
     
     /**
      * Tipo o nombre del veneno.
