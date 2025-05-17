@@ -28,6 +28,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        
+        this.setIconImage(new ImageIcon(getClass().getResource("/autonoma/demoatrapacomida/images/Logo.jpeg")).getImage());
 
         ImageIcon fondo = new ImageIcon(getClass().getResource("/autonoma/demoatrapacomida/images/Portada.jpeg"));
 
