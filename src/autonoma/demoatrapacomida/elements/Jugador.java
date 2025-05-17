@@ -115,25 +115,26 @@ public class Jugador extends SpriteMobile{
     }
     public void move(int direccion)
     {
-        int nx = x;
-        int ny = y;
         
+        System.out.println("envento teclado jugador");
+        System.out.println("posiscion actual");
+        System.out.println("x :" +x+ "  y : "+y);
         switch(direccion )
         {
             case KeyEvent.VK_UP:
-                ny -= pasos;
+                y -= pasos;
             break;
 
             case KeyEvent.VK_DOWN:
-                ny += pasos;
+                y += pasos;
             break;
 
             case KeyEvent.VK_LEFT:
-                nx -= pasos;
+                x -= pasos;
             break;
 
             case KeyEvent.VK_RIGHT:
-                nx += pasos;
+                x += pasos;
             break;
         }
         

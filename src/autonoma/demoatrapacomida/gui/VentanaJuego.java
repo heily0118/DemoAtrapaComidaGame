@@ -155,8 +155,7 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
            evt.getKeyCode() == KeyEvent.VK_LEFT |
            evt.getKeyCode() == KeyEvent.VK_RIGHT)
         {
-            
-            
+                  
             try {
                 juego.manejarEventoTeclado(evt.getKeyCode());
             } catch (IOException ex) {
@@ -177,6 +176,10 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
         g.setFont(new Font("Arial", Font.BOLD, 24));
         g.drawString("PUNTAJE", 25, 80);
         g.drawString(String.valueOf(juego.getCampo().getJugador().getPuntaje().getPuntajeActual()), 150, 80);
+<<<<<<< HEAD
+        juego.getCampo().getJugador().paint(g);
+=======
+>>>>>>> 73c6e91b1bed24eba850cf918b44477123533bea
     }
 
     public void dibujar(Graphics g) {
