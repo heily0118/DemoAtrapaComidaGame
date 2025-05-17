@@ -45,6 +45,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         JButton botonJugar = new JButton("Jugar");
         botonJugar.setBounds(340, 600, 120, 40);
         botonJugar.addActionListener(e -> {
+            pedirNombreJugador();
             new VentanaInformacion(this, true, juego).setVisible(true);
             dispose();
         });
