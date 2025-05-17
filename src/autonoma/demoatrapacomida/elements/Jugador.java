@@ -72,7 +72,10 @@ public class Jugador extends SpriteMobile{
 
     public void atraparComida(ArrayList<Comida> comidas){
     
-   
+         if (comidas == null || comidas.isEmpty()) {
+            System.out.println("No hay comida.");
+            return;
+        }        
        
         //se hace un ciclo de las comidas par ver si el jugador esta encima de una  
         for (Comida comida : comidas) {
@@ -93,8 +96,10 @@ public class Jugador extends SpriteMobile{
     }   
     public void atraparVeneno(ArrayList<Veneno> venenos){
     
-        
-        
+         if (venenos == null || venenos.isEmpty()) {
+            System.out.println("No hay venenos.");
+            return;
+        } 
         //se hace un ciclo de las comidas par ver si el jugador esta encima de una  
         for (Veneno veneno : venenos) {
             

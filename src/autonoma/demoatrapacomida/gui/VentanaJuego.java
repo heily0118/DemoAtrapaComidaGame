@@ -12,6 +12,7 @@ import autonoma.demoatrapacomida.elements.VideoJuego;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
@@ -36,6 +37,7 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
      */
     
     private VideoJuego juego;
+    private Image buffer;
     
     public VentanaJuego(java.awt.Frame parent, boolean modal,VideoJuego juego) {
 
@@ -173,18 +175,14 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
         dibujar(g); 
         juego.dibujarElementos(g); 
        
-
         g.setColor(Color.BLACK);
         g.setFont(new Font("Arial", Font.BOLD, 24));
         g.drawString("PUNTAJE", 25, 80);
         g.drawString(String.valueOf(juego.getCampo().getJugador().getPuntaje().getPuntajeActual()), 150, 80);
-<<<<<<< HEAD
-        
-=======
+
 
         juego.getCampo().getJugador().paint(g);
 
->>>>>>> 38d1e92d782208d90a9d46839f98d30ca969adf0
     }
 
     public void dibujar(Graphics g) {
@@ -198,7 +196,6 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
     @Override
     public void refresh(Graphics g) {
         
-        juego.dibujarElementos(g); 
         this.repaint();
 
     }
@@ -208,6 +205,9 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
         return this.getBounds();
     }
 
+
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }
