@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 
 /**
  *
@@ -28,7 +29,7 @@ import javax.swing.ImageIcon;
  * @since 20250501
  * @see autonoma.emoatrapacomida..elements
  */
-public class VentanaJuego extends javax.swing.JDialog implements GraphicContainer {
+public class VentanaJuego extends JFrame implements GraphicContainer {
 
     /**
      * Creates new form VentanaJuego
@@ -37,10 +38,14 @@ public class VentanaJuego extends javax.swing.JDialog implements GraphicContaine
     private VideoJuego juego;
     
     public VentanaJuego(java.awt.Frame parent, boolean modal,VideoJuego juego) {
-        super(parent, modal);
-        
+
         initComponents();
         this.juego = juego;
+        setTitle("Atrapa Comida");
+        setSize(800, 800);
+        setLocationRelativeTo(null);
+        setResizable(false);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         this.setSize(800,800);
          setResizable(false);
@@ -55,6 +60,8 @@ public class VentanaJuego extends javax.swing.JDialog implements GraphicContaine
             
         }
 
+
+        
     }
 
     /**
@@ -113,7 +120,9 @@ public class VentanaJuego extends javax.swing.JDialog implements GraphicContaine
 
        
     }
-        
+      
+    
+    
     }//GEN-LAST:event_formMouseClicked
 
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
@@ -140,12 +149,12 @@ public class VentanaJuego extends javax.swing.JDialog implements GraphicContaine
         
     }//GEN-LAST:event_formKeyPressed
 
-        @Override
+    @Override
     public void paint(Graphics g) {
         super.paint(g); // Llama al método de la clase padre para asegurar que se dibuje el fondo
         dibujar(g); // Llama a tu método dibujar
         
-        
+        juego.getCampo().getJugador().paint(g);
         g.setColor(Color.BLACK);
         g.setFont(new Font("Arial", Font.BOLD, 24));
         g.drawString("PUNTAJE", 25, 80);
