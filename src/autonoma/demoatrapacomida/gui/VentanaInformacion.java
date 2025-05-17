@@ -55,26 +55,31 @@ public class VentanaInformacion extends javax.swing.JDialog {
             labelPuntaje.setFont(new Font("Arial", Font.BOLD, 20));
             labelPuntaje.setForeground(Color.WHITE);
             fondo.add(labelPuntaje);
+            
+            // Centrado de botones
+            int botonAncho = 180;
+            int xCentro = (800 - botonAncho) / 2;
 
-            // Botón Iniciar Juego
-            JButton btnIniciar = new JButton("Iniciar Juego");
-            btnIniciar.setBounds(200, 220, 180, 35);
-            btnIniciar.addActionListener(e -> {
-                new VentanaJuego((Frame) getParent(), true, juego).setVisible(true);
-                dispose();
-            });
-            fondo.add(btnIniciar);
+             // Botón Iniciar Juego
+             JButton btnIniciar = new JButton("Iniciar Juego");
+             btnIniciar.setBounds(xCentro, 220, botonAncho, 35);
+             estiloBoton(btnIniciar);
+             btnIniciar.addActionListener(e -> {
+                 new VentanaJuego((Frame) getParent(), true, juego).setVisible(true);
+                 dispose();
+             });
+             fondo.add(btnIniciar);
 
-            // Botón Reiniciar Juego
+             // Botón Reiniciar Juego
              JButton btnReiniciar = new JButton("Reiniciar Juego");
-             btnReiniciar.setBounds(200, 270, 180, 35);
+             btnReiniciar.setBounds(xCentro, 270, botonAncho, 35);
+             estiloBoton(btnReiniciar);
              btnReiniciar.addActionListener(e -> {
-                    juego.reinicarJuego();
-                    labelPuntaje.setText("Puntaje: " + juego.getCampo().getJugador().getPuntaje().getPuntajeActual());
-                    JOptionPane.showMessageDialog(this, "El juego ha sido reiniciado.");
-                });
-                fondo.add(btnReiniciar);
-                
+                 juego.reinicarJuego();
+                 labelPuntaje.setText("Puntaje: " + juego.getCampo().getJugador().getPuntaje().getPuntajeActual());
+                 JOptionPane.showMessageDialog(this, "El juego ha sido reiniciado.");
+             });
+             fondo.add(btnReiniciar);
             addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent e) {
@@ -116,6 +121,14 @@ public class VentanaInformacion extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void estiloBoton(JButton boton) {
+        boton.setForeground(Color.WHITE);
+        boton.setFont(new Font("Arial", Font.BOLD, 16));
+        boton.setOpaque(false);
+        boton.setContentAreaFilled(false);
+        boton.setBorderPainted(true);
+        boton.setFocusPainted(false);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
