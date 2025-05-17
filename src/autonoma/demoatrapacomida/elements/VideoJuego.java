@@ -38,6 +38,7 @@ public class VideoJuego {
     }
 
     public void iniciarJuego() {
+         generarComida();
        
     }
 
@@ -52,7 +53,9 @@ public class VideoJuego {
         
         }
     }
-    
+    public void generarComida(){
+        campo.agregarComidas();
+    }
     
       /**
      * Dibuja todos los elementos del campo en pantalla.
@@ -60,6 +63,17 @@ public class VideoJuego {
      * @param g Objeto gráfico para dibujar
      */
     public void dibujarElementos(Graphics g) {
+       
+        for (Comida comida : campo.getComidas()) {
+            comida.paint(g);
+        }
+        
+        campo.getJugador().paint(g);
+
+       
+        for (Veneno v : campo.getVenenos()) {
+            v.paint(g);
+        }
            
     }
     
