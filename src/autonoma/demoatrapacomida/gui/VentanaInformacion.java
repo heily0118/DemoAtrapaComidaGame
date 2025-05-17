@@ -8,10 +8,12 @@ import autonoma.demoatrapacomida.elements.VideoJuego;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Frame;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.border.Border;
 
 /**
  *
@@ -41,21 +43,29 @@ public class VentanaInformacion extends javax.swing.JDialog {
             setContentPane(fondo);
             fondo.setLayout(null);
 
+            // Fuente estilo videojuego más suave
+            Font fuenteJuego = new Font("Monospaced", Font.BOLD, 24);
+            Color colorLetra = new Color(127, 219, 255); 
+            Color colorBorde = new Color(0, 51, 102, 180); 
+            Border borde = BorderFactory.createLineBorder(colorBorde, 2);
+
             // Mostrar nombre del jugador
             String nombre = juego.getCampo().getJugador().getNombre();
             labelNombre = new JLabel("Jugador: " + nombre);
-            labelNombre.setBounds(50, 30, 300, 30);
-            labelNombre.setFont(new Font("Arial", Font.BOLD, 20));
-            labelNombre.setForeground(Color.WHITE);
+            labelNombre.setBounds(50, 30, 300, 40);
+            labelNombre.setFont(fuenteJuego);
+            labelNombre.setForeground(colorLetra);
+            labelNombre.setBorder(borde);
             fondo.add(labelNombre);
 
             // Mostrar puntaje
             labelPuntaje = new JLabel("Puntaje: " + juego.getCampo().getJugador().getPuntaje().getPuntajeActual());
-            labelPuntaje.setBounds(50, 70, 300, 30);
-            labelPuntaje.setFont(new Font("Arial", Font.BOLD, 20));
-            labelPuntaje.setForeground(Color.WHITE);
+            labelPuntaje.setBounds(50, 80, 300, 40);
+            labelPuntaje.setFont(fuenteJuego);
+            labelPuntaje.setForeground(colorLetra);
+            labelPuntaje.setBorder(borde);
             fondo.add(labelPuntaje);
-            
+
             // Centrado de botones
             int botonAncho = 180;
             int xCentro = (800 - botonAncho) / 2;
