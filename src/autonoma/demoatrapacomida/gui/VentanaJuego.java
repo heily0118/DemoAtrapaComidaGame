@@ -12,6 +12,7 @@ import autonoma.demoatrapacomida.elements.VideoJuego;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
@@ -36,6 +37,7 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
      */
     
     private VideoJuego juego;
+    private Image fondoCampo;
     
     public VentanaJuego(java.awt.Frame parent, boolean modal,VideoJuego juego) {
 
@@ -54,8 +56,8 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
         
         
         try{ 
-        this.setIconImage(new ImageIcon(getClass().getResource("/autonoma/DemoAtrapaComida/images/Logo.jpeg")).getImage());
-        
+            this.setIconImage(new ImageIcon(getClass().getResource("/autonoma/DemoAtrapaComida/images/Logo.jpeg")).getImage());
+            fondoCampo = new ImageIcon(getClass().getResource("/autonoma/DemoAtrapaComida/images/fondoCampo.jpeg")).getImage();
         }catch(NullPointerException e){
             System.out.println("Imagen no encontrada");
             
@@ -183,10 +185,13 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
     }
 
     public void dibujar(Graphics g) {
-        
-        
-        g.setColor(new Color(34, 139, 34));
-        g.fillRect(0, 0, 800, 800);
+        if (fondoCampo != null) {
+            g.drawImage(fondoCampo, 0, 0, getWidth(), getHeight(), this);
+        } else {
+            // Si no se carga la imagen, dibuja fondo verde como fallback
+            g.setColor(new Color(34, 139, 34));
+            g.fillRect(0, 0, 800, 800);
+        }
     }
 
     @Override
