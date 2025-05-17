@@ -45,9 +45,7 @@ public class Campo extends SpriteContainer{
             if (venenos.size() < 4) {
                 agregarVeneno();
             }
-            
-//            actualizarComidas();
-//            actualizarVenenos();
+           
         });
         timer.start();
         
@@ -78,40 +76,86 @@ public class Campo extends SpriteContainer{
     
     }
     
-    public void agregarComidas(){
+    
+    
+    public void agregarComidas() {
         Random rand = new Random();
-        int anchoCampo = getWidth(); 
+        int anchoCampo = getWidth();
         int anchoComida = 50;
 
-        for (int i = 0; i < 3; i++) { 
-            int posXHotDog = rand.nextInt(anchoCampo - anchoComida);
-            int posXHamburguesa = rand.nextInt(anchoCampo - anchoComida);
+        for (int i = 0; i < 3; i++) {
+            HotDog h;
+            Hamburguesa b;
+            boolean colision;
 
-            HotDog h = new HotDog(posXHotDog, 0, 50, 50, "HotDog", null);
-            Hamburguesa b = new Hamburguesa(posXHamburguesa, 0, 50, 50, "Hamburguesa", null);
-
+            do {
+                int posX = rand.nextInt(anchoCampo - anchoComida);
+                h = new HotDog(posX, 0, 50, 50, "HotDog", null);
+                colision = verificarColisionComida(h);
+            } while (colision);
             comidas.add(h);
-            comidas.add(b);
-
             new Thread(h).start();
+
+            do {
+                int posX = rand.nextInt(anchoCampo - anchoComida);
+                b = new Hamburguesa(posX, 0, 50, 50, "Hamburguesa", null);
+                colision = verificarColisionComida(b);
+            } while (colision);
+            comidas.add(b);
             new Thread(b).start();
         }
     }
     
-    public void agregarVeneno(){
+    public void agregarVeneno() {
         Random rand = new Random();
-        int anchoCampo = getWidth(); 
+        int anchoCampo = getWidth();
         int anchoCigarrillo = 50;
 
-        for (int i = 0; i < 3; i++) {  
-           int posX = rand.nextInt(anchoCampo - anchoCigarrillo);
-            Veneno v = new Veneno(posX, 0, 50, 50);
+        for (int i = 0; i < 3; i++) {
+            Veneno v;
+            boolean colision;
+
+            do {
+                int posX = rand.nextInt(anchoCampo - anchoCigarrillo);
+                v = new Veneno(posX, 0, 50, 50);
+                colision = verificarColisionVeneno(v) || verificarColisionConComidas(v);
+            
+            } while (colision);
+
             venenos.add(v);
             new Thread(v).start();
         }
     }
 
+
     private int getWidth() {
         return 800; 
+    }
+    
+    private boolean verificarColisionComida(Comida nueva) {
+        for (Comida c : comidas) {
+            if (nueva.checkCollision(c)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    private boolean verificarColisionVeneno(Veneno nuevo) {
+        for (Veneno v : venenos) {
+            if (nuevo.checkCollision(v)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    private boolean verificarColisionConComidas(Veneno v) {
+        for (Comida comida : comidas) {
+            if (v.checkCollision(comida)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
