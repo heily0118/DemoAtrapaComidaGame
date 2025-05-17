@@ -143,16 +143,8 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
     // Verifica si el botón izquierdo del mouse fue presionado
     if (evt.getButton() == MouseEvent.BUTTON1) {
         // Aquí va el código que deseas ejecutar al hacer clic izquierdo
-        System.out.println("¡Clic izquierdo detectado!");
+        System.out.println("Clic izquierdo detectado!");
         
-        /* al dar clik se va hacer lo siguente
-        primero se va ver si el jugador esta encima en uno de los objetos
-        y eso se hace en el metodo de atrapar comida 
-        
-        y ese metodo va recicibir la lista de comidas y venenos 
-        */
-        
-        //se crea un jugador de estudio
        juego.getCampo().getJugador().atraparComida(juego.getCampo().getComidas());
        juego.getCampo().getJugador().atraparVeneno(juego.getCampo().getVenenos());
                 

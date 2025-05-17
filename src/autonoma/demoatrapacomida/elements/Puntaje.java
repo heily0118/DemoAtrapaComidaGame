@@ -54,7 +54,8 @@ public class Puntaje {
     }
     public void dismuirPuntaje(int valor ){
     
-        this.puntajeActual -= valor;
+        System.out.println("se resta "+ valor);
+        this.puntajeActual += valor;
     
     }
 
