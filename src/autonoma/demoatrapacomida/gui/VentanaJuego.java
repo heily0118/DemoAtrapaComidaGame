@@ -24,6 +24,11 @@ import java.nio.Buffer;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -46,10 +51,13 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
     private BufferedImage buffer; 
     private boolean juegoTerminado = false;
     private boolean timerGameOverStarted;
+    private Clip clip;
     
     public VentanaJuego(java.awt.Frame parent, boolean modal,VideoJuego juego) {
 
         initComponents();
+        
+        reproducirSonido();
         this.juego = juego;
         setTitle("Atrapa Comida");
         setSize(800, 800);
@@ -268,7 +276,7 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
         if (!timerGameOverStarted) {
             timerGameOverStarted = true;
             new javax.swing.Timer(500, e -> {
-                VentanaInformacion info = new VentanaInformacion(this, true, juego);
+                VentanaInformacion info = new VentanaInformacion(this, true, juego, null);
                 info.setVisible(true);
                 dispose(); 
                 
@@ -276,6 +284,19 @@ public class VentanaJuego extends JFrame implements GraphicContainer {
         }).start();
     }
 }
+    
+    
+    public void reproducirSonido() {
+        try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(
+                    getClass().getResource("/autonoma/demoatrapacomida/sounds/Campo.wav"));
+            clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            e.printStackTrace();
+        }
+    }
     
     public void dibujarElementos(Graphics g) {
         for (Comida c : juego.getCampo().getComidas()) {
