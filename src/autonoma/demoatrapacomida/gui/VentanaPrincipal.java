@@ -58,7 +58,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         estiloBoton(botonJugar);  // <- Aplicar estilo
         botonJugar.addActionListener(e -> {
             pedirNombreJugador();
-            new VentanaInformacion(this, true, juego).setVisible(true);
+            new VentanaInformacion(this, true, juego,clip).setVisible(true);
             dispose();
         });
 

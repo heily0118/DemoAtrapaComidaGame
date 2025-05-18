@@ -8,6 +8,7 @@ import autonoma.demoatrapacomida.elements.VideoJuego;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Frame;
+import javax.sound.sampled.Clip;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -23,9 +24,12 @@ public class VentanaInformacion extends javax.swing.JDialog {
     private VideoJuego juego;
     private JLabel labelNombre;
     private JLabel labelPuntaje;
+    private Clip clip;    
 
-    public VentanaInformacion(Frame parent, boolean modal, VideoJuego juego) {
+    public VentanaInformacion(Frame parent, boolean modal, VideoJuego juego, Clip clip) {
             super(parent, modal);
+            
+            this.clip = clip;
             this.juego = juego;
             initComponents();
             setTitle("Atrapa Comida");
@@ -75,8 +79,18 @@ public class VentanaInformacion extends javax.swing.JDialog {
              btnIniciar.setBounds(xCentro, 220, botonAncho, 35);
              estiloBoton(btnIniciar);
              btnIniciar.addActionListener(e -> {
+                    
+                 if (clip != null) {
+                     System.out.println("parar musica");
+                       clip.stop();
+                       clip.close();
+                   }
+                 
                  new VentanaJuego((Frame) getParent(), true, juego).setVisible(true);
                  dispose();
+                 
+                 
+                 
              });
              fondo.add(btnIniciar);
 
@@ -138,6 +152,14 @@ public class VentanaInformacion extends javax.swing.JDialog {
         boton.setContentAreaFilled(false);
         boton.setBorderPainted(true);
         boton.setFocusPainted(false);
+    }
+    
+    public Clip getClip() {
+        return clip;
+    }
+
+    public void setClip(Clip clip) {
+        this.clip = clip;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
