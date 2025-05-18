@@ -24,7 +24,7 @@ public class DemoAtrapaComida {
 
         
         VentanaPrincipal ventana = new VentanaPrincipal (juego);
-         ventana.setVisible(true);
+        ventana.setVisible(true);
        
     }
     
