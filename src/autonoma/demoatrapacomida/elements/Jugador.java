@@ -18,7 +18,7 @@ import javax.swing.ImageIcon;
  * @since 20250501
  * @see autonoma.emoatrapacomida..elements
  */
-public class Jugador extends SpriteMobile{
+public class Jugador extends Sprite{
     
     
     ////////////////////////////////
@@ -148,14 +148,12 @@ public class Jugador extends SpriteMobile{
         g.drawImage(jugadorImage, x, y, width, height, null);
     }
 
-    @Override
-    public void run() {
 
-    }
-    
     public void reiniciarPuntaje(){
         puntaje.actualizarPuntaje();
     }
+
+
     
     
 
