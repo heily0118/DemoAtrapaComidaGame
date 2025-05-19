@@ -42,8 +42,7 @@ public class Hamburguesa extends Comida {
     public void run() {
         while (true) {
             try {
-                // Mueve hacia abajo
-                this.setY(this.getY() + 5);
+                 this.caer();
 
                 // Verifica si salió de la pantalla (fuera del límite inferior)
                 if (this.getY() > 800) {

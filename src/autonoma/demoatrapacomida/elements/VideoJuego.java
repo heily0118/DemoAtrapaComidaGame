@@ -114,6 +114,6 @@ public class VideoJuego {
     public void reinicarJuego() {
         campo.getComidas().clear();
         campo.getVenenos().clear();
-        campo.getJugador().getPuntaje().actualizarPuntaje();
+        campo.reiniciarCampo();
     }
 }
