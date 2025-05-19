@@ -67,6 +67,7 @@ public abstract class Comida extends SpriteMobile {
     public boolean estaCayendo() {
         return y < 800;
     }
+    
     public abstract void caer();
    
 
