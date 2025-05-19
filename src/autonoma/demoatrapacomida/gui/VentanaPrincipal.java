@@ -21,8 +21,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
- *
- * @author USUARIO
+ * 
+ * @author Heily Yohana Rios Ayala <heilyy.riosa@autonoma.edu.co>
+ * @since 20250516
+ * @version 1.0.0
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
 

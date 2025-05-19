@@ -11,7 +11,8 @@ import java.awt.event.KeyEvent;
 import java.io.IOException;
 
 /**
- * @author Heily Yohana Rios Ayala
+ * 
+ * @author Heily Yohana Rios Ayala <heilyy.riosa@autonoma.edu.co>
  * @since 20250516
  * @version 1.0.0
  */
