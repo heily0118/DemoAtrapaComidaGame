@@ -81,7 +81,6 @@ public class VentanaInformacion extends javax.swing.JDialog {
              btnIniciar.addActionListener(e -> {
                     
                  if (clip != null) {
-                     System.out.println("parar musica");
                        clip.stop();
                        clip.close();
                    }
